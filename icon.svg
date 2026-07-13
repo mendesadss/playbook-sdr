@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Playbook SDR">
+  <rect width="512" height="512" rx="112" fill="#0E1217"/>
+  <path d="M116 140h280a28 28 0 0 1 28 28v168a28 28 0 0 1-28 28H236l-84 62v-62h-36a28 28 0 0 1-28-28V168a28 28 0 0 1 28-28z" fill="#F2A93B"/>
+  <g fill="#0E1217" font-family="Consolas, 'SF Mono', ui-monospace, monospace" font-weight="700" font-size="104" text-anchor="middle">
+    <text x="266" y="288">SDR</text>
+  </g>
+</svg>

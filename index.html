@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0E1217">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Playbook SDR">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>Playbook SDR · Direct Mendes</title>
+<meta name="color-scheme" content="dark light">
+<style>
+  :root{
+    --bg:#0E1217; --panel:#161C24; --panel2:#1E2630; --border:#2A333F;
+    --text:#E7ECF2; --muted:#8B98A8; --faint:#5D6875;
+    --accent:#F2A93B; --accent-soft:rgba(242,169,59,.14); --accent-ink:#241701;
+    --good:#37C28C; --good-soft:rgba(55,194,140,.14); --good-ink:#06231a;
+    --crit:#E9634E; --crit-soft:rgba(233,99,78,.12);
+    --a:#7BA0F0; --a-soft:rgba(123,160,240,.13); --a-bd:#5E7FD6;
+    --b:#F2A93B; --b-soft:rgba(242,169,59,.14); --b-bd:#F2A93B;
+    --mono:ui-monospace,"Cascadia Code","Cascadia Mono","JetBrains Mono",Consolas,"SF Mono",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#EEF1F5; --panel:#FFFFFF; --panel2:#F4F6F9; --border:#D7DDE5;
+      --text:#141D27; --muted:#54626F; --faint:#8593A0;
+      --accent:#B26E12; --accent-soft:rgba(178,110,18,.10); --accent-ink:#fff;
+      --good:#128A62; --good-soft:rgba(18,138,98,.10); --good-ink:#fff;
+      --crit:#C43C2B; --crit-soft:rgba(196,60,43,.09);
+      --a:#3C64D2; --a-soft:rgba(60,100,210,.09); --a-bd:#3C64D2;
+      --b:#B26E12; --b-soft:rgba(178,110,18,.10); --b-bd:#B26E12;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1217; --panel:#161C24; --panel2:#1E2630; --border:#2A333F;
+    --text:#E7ECF2; --muted:#8B98A8; --faint:#5D6875;
+    --accent:#F2A93B; --accent-soft:rgba(242,169,59,.14); --accent-ink:#241701;
+    --good:#37C28C; --good-soft:rgba(55,194,140,.14); --good-ink:#06231a;
+    --crit:#E9634E; --crit-soft:rgba(233,99,78,.12);
+    --a:#7BA0F0; --a-soft:rgba(123,160,240,.13); --a-bd:#5E7FD6;
+    --b:#F2A93B; --b-soft:rgba(242,169,59,.14); --b-bd:#F2A93B;
+  }
+  :root[data-theme="light"]{
+    --bg:#EEF1F5; --panel:#FFFFFF; --panel2:#F4F6F9; --border:#D7DDE5;
+    --text:#141D27; --muted:#54626F; --faint:#8593A0;
+    --accent:#B26E12; --accent-soft:rgba(178,110,18,.10); --accent-ink:#fff;
+    --good:#128A62; --good-soft:rgba(18,138,98,.10); --good-ink:#fff;
+    --crit:#C43C2B; --crit-soft:rgba(196,60,43,.09);
+    --a:#3C64D2; --a-soft:rgba(60,100,210,.09); --a-bd:#3C64D2;
+    --b:#B26E12; --b-soft:rgba(178,110,18,.10); --b-bd:#B26E12;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+
+  /* ===== Top bar ===== */
+  .topbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border);
+    padding:14px 20px 0;backdrop-filter:blur(6px);}
+  .brand{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+    font-weight:700;margin-bottom:10px;}
+  .tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{font-family:var(--sans);font-size:14.5px;font-weight:600;color:var(--muted);background:none;border:none;
+    padding:10px 16px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:color .15s;}
+  .tab:hover{color:var(--text);}
+  .tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+  .tab:focus-visible,.subtab:focus-visible,.whytoggle:focus-visible,.bbl-copy:focus-visible,.fk:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px;border-radius:6px;}
+
+  main{max-width:880px;margin:0 auto;padding:28px 20px 100px;}
+  .panel{display:none;}
+  .panel.active{display:block;animation:fade .18s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+
+  .panel-head{margin-bottom:20px;}
+  .panel-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:4px;}
+  .panel-title{font-size:24px;font-weight:800;letter-spacing:-.01em;}
+  .panel-sub{color:var(--muted);font-size:14.5px;margin-top:4px;max-width:60ch;}
+
+  /* ===== Sub-tabs (Trilha B) ===== */
+  .subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
+  .subtab{font-family:var(--mono);font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:8px;
+    border:1px solid var(--border);background:var(--panel2);color:var(--muted);cursor:pointer;transition:.15s;}
+  .subtab:hover{border-color:var(--b-bd);color:var(--text);}
+  .subtab.active{background:var(--b-soft);border-color:var(--b-bd);color:var(--b);}
+  .subpanel{display:none;}
+  .subpanel.active{display:block;animation:fade .15s ease;}
+
+  /* ===== Card ===== */
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:14px;}
+  .card.g{border-color:color-mix(in srgb,var(--good) 45%,var(--border));background:var(--good-soft);}
+  .steplabel{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px;}
+  .card-tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .card.g .card-tag{color:var(--good);}
+  .card-meta{font-size:11.5px;color:var(--faint);font-family:var(--mono);}
+
+  /* ===== Chat frame (mockup de DM) ===== */
+  .chatframe{background:#F0F2F5;border:1px solid #E1E4E8;border-radius:16px;padding:12px;
+    max-width:min(320px,100%);margin:10px 0 4px;display:flex;flex-direction:column;gap:4px;}
+  .chatframe.mini{padding:10px;}
+  .bblrow{display:flex;align-items:center;gap:8px;}
+  .bbl{background:#0095F6;color:#fff;padding:8px 14px;border-radius:18px;border-bottom-right-radius:5px;
+    font-size:14.5px;line-height:1.35;max-width:225px;margin-left:auto;word-wrap:break-word;}
+  .bbl b{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.55);}
+  .bbl-copy{flex:none;width:27px;height:27px;border-radius:50%;border:1px solid #D7DDE5;background:#fff;
+    color:#8593A0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;padding:0;}
+  .bbl-copy:hover{color:#0095F6;border-color:#0095F6;}
+  .bbl-copy.copied{background:#128A62;border-color:#128A62;color:#fff;}
+  .bbl-copy svg{width:13px;height:13px;flex:none;}
+  .bbl-copy .ic-check{display:none;}
+  .bbl-copy.copied .ic-copy{display:none;}
+  .bbl-copy.copied .ic-check{display:block;}
+  .bridgelabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--good);margin:12px 0 0;}
+
+  .whytoggle{margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted);background:none;border:none;
+    cursor:pointer;padding:0;display:flex;align-items:center;gap:5px;}
+  .whytoggle:hover{color:var(--accent);}
+  .whybody{font-size:13.5px;color:var(--muted);margin-top:8px;padding:10px 13px;background:var(--panel2);
+    border-radius:8px;border-left:2px solid var(--accent);line-height:1.5;}
+  .whybody b{color:var(--text);}
+  .whybody.hidden{display:none;}
+  .chev{transition:transform .15s;}
+  .whytoggle.open .chev{transform:rotate(180deg);}
+
+  /* ===== Fork ===== */
+  .fork{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  @media(max-width:600px){.fork{grid-template-columns:1fr;}}
+  .fk{border-radius:12px;padding:16px 18px;border:1px solid;cursor:pointer;transition:.15s;background:var(--panel);text-align:left;font:inherit;}
+  .fk:hover{transform:translateY(-2px);}
+  .fk.a{border-color:var(--a-bd);} .fk.b{border-color:var(--b-bd);}
+  .fk .ft{font-family:var(--mono);font-weight:700;font-size:13px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .fk.a .ft{color:var(--a);} .fk.b .ft{color:var(--b);}
+  .fk p{margin:0;font-size:13.5px;color:var(--muted);}
+  .fk .says{font-style:italic;font-size:12.5px;color:var(--faint);margin-top:8px;}
+  .fk .go{font-family:var(--mono);font-size:11px;}
+
+  /* ===== Areabars (B0) ===== */
+  .areabars{display:flex;flex-direction:column;gap:9px;margin:14px 0;}
+  .ab{display:grid;grid-template-columns:140px 1fr 42px;align-items:center;gap:12px;}
+  .ab .nm{font-size:13.5px;} .ab .tr{background:var(--panel2);border-radius:5px;height:16px;overflow:hidden;}
+  .ab .fl{display:block;height:100%;background:var(--b);border-radius:5px;}
+  .ab .pc{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;}
+
+  /* ===== Objeções / Regras ===== */
+  .oc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:640px){.oc-grid{grid-template-columns:1fr;}}
+  .oc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;}
+  .oc .q{font-family:var(--mono);font-size:13px;color:var(--crit);font-weight:600;margin-bottom:10px;}
+  .oc .q::before{content:"\201C";} .oc .q::after{content:"\201D";}
+
+  .rules4{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:18px;}
+  @media(max-width:560px){.rules4{grid-template-columns:1fr;}}
+  .rc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;}
+  .rc .n{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;}
+  .rc h4{margin:4px 0 4px;font-size:14.5px;} .rc p{margin:0;font-size:13px;color:var(--muted);}
+
+  .callout{border-radius:12px;padding:16px 19px;border:1px solid var(--border);background:var(--panel2);
+    font-size:14px;color:var(--muted);margin-top:8px;}
+  .callout b{color:var(--text);}
+
+  ::selection{background:var(--accent-soft);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Playbook SDR · Direct Mendes</div>
+  <nav class="tabs" id="mainTabs">
+    <button class="tab active" data-tab="abertura">Abertura</button>
+    <button class="tab" data-tab="trilhaA">Trilha A</button>
+    <button class="tab" data-tab="trilhaB">Trilha B</button>
+    <button class="tab" data-tab="objecoes">Objeções</button>
+    <button class="tab" data-tab="regras">Regras</button>
+  </nav>
+</div>
+
+<main>
+
+  <!-- ===================== ABERTURA ===================== -->
+  <section class="panel active" id="panel-abertura">
+    <div class="panel-head">
+      <div class="panel-eyebrow">Fases 1 e 2 · tronco comum</div>
+      <div class="panel-title">Abertura, follow-up e triagem</div>
+      <div class="panel-sub">Toda conversa nova começa aqui. A última pergunta define a trilha.</div>
+    </div>
+
+    <div class="card">
+      <div class="steplabel"><span class="card-tag">Mensagem 1 · abertura</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Fala [nome], tudo certo? Vi que você chegou aqui recentemente." title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Fala [nome], tudo certo? Vi que você chegou aqui recentemente.</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Posso te fazer uma pergunta rápida?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Posso te fazer uma pergunta rápida?</div>
+        </div>
+      </div>
+      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+      <div class="whybody hidden"><b>Por quê:</b> "chegou aqui recentemente" dá contexto sem soar automático; "posso te perguntar?" é um micro-sim que abre a conversa. Sempre com o <b>primeiro nome</b>.</div>
+    </div>
+
+    <div class="card">
+      <div class="steplabel"><span class="card-tag" style="color:var(--faint)">Se não responder em cerca de 4h: 1 follow-up só</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Passei aqui rapidinho [nome]." title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Passei aqui rapidinho [nome].</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Tu chegou atrás de entrar no digital ou já tá no jogo?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Tu chegou atrás de entrar no digital ou já tá no jogo?</div>
+        </div>
+      </div>
+      <div class="whybody">Uma única tentativa, não mais que isso, pra não queimar o lead.</div>
+    </div>
+
+    <div class="card">
+      <div class="steplabel"><span class="card-tag">Mensagem 2 · triagem</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Tu chegou aqui querendo entrar no mercado digital?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Tu chegou aqui querendo <b>entrar no mercado digital</b>?</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Ou já atua e tá buscando escalar?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Ou já <b>atua e tá buscando escalar</b>?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fork">
+      <button class="fk a" type="button" onclick="goTab('trilhaA')">
+        <div class="ft"><span>→ "QUERO ENTRAR"</span> <span class="go">ir → Trilha A</span></div>
+        <p>Iniciante / saindo do CLT. Foco em direção e segurança.</p>
+        <div class="says">"quero começar", "tô perdido", "ainda não sei nada"</div>
+      </button>
+      <button class="fk b" type="button" onclick="goTab('trilhaB')">
+        <div class="ft"><span>→ "JÁ ATUO"</span> <span class="go">ir → Trilha B</span></div>
+        <p>Já tem operação. Converte mais.</p>
+        <div class="says">"já tenho loja", "já rodo tráfego", "trabalho com X"</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===================== TRILHA A ===================== -->
+  <section class="panel" id="panel-trilhaA">
+    <div class="panel-head">
+      <div class="panel-eyebrow" style="color:var(--a)">Trilha A · foco: direção + segurança</div>
+      <div class="panel-title">Perfil A · "Quero entrar"</div>
+      <div class="panel-sub">Iniciante, tem emprego/bico, quer renda e liberdade. Precisa de direção.</div>
+    </div>
+
+    <div class="card">
+      <div class="steplabel"><span class="card-tag">A1 · situação atual</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Bacana Mano! E hoje tu trabalha com o quê? CLT, autônomo, tá estudando?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Bacana Mano! E hoje tu trabalha com o quê? CLT, autônomo, tá estudando?</div>
+        </div>
+      </div>
+      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+      <div class="whybody hidden"><b>Por quê:</b> mapeia a realidade dele (a maioria é CLT ou faz bico) e cria conexão.</div>
+    </div>
+
+    <div class="card">
+      <div class="steplabel"><span class="card-tag">A2 · motivação</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Entendi. E o que te fez querer entrar no mercado digital?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Entendi. E o que te fez querer entrar no mercado digital?</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Tá querendo uma renda extra ou já pensa em viver disso e sair do CLT?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Tá querendo uma renda extra ou já pensa em viver disso e sair do CLT?</div>
+        </div>
+      </div>
+      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+      <div class="whybody hidden"><b>Por quê:</b> o lead verbaliza o desejo, isso cria conexão e dá material pra call.</div>
+    </div>
+
+    <div class="card">
+      <div class="steplabel"><span class="card-tag">A3 · investimento inicial</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Faz sentido. Para começar a vender precisa de um investimento inicial." title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Faz sentido. Para começar a vender precisa de um investimento inicial.</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Isso inclui loja e anúncios pra testar." title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Isso inclui loja e anúncios pra testar.</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Tu já tem uma reserva separada pra isso ou tá começando do absoluto zero?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Tu já tem uma reserva separada pra isso ou tá começando do absoluto zero?</div>
+        </div>
+      </div>
+      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+      <div class="whybody hidden"><b>Por quê:</b> introduz que existe investimento, sem preço ainda, prepara o terreno.</div>
+    </div>
+
+    <div class="card">
+      <div class="steplabel"><span class="card-tag">A4 · valor de caixa · direto e leve</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Só pra te situar, dá pra começar bem com algo entre 1k e 2k." title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Só pra te situar, dá pra começar bem com algo entre 1k e 2k.</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Tu tem esse valor disponível hoje pra investir?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Tu tem esse valor disponível hoje pra investir?</div>
+        </div>
+      </div>
+      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+      <div class="whybody hidden"><b>Por quê:</b> ancora o ticket de entrada e qualifica a verba de forma objetiva, sem ser invasivo. Se disser que não tem agora, vá para a objeção "sem grana" (aba Objeções).</div>
+    </div>
+
+    <div class="card">
+      <div class="steplabel"><span class="card-tag">A5 · convite · valor</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Bacana, já dá pra iniciar bem!" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Bacana, já dá pra iniciar bem!</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Topa marcar uma call com meu sócio?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Topa marcar uma call com meu sócio?</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Te mostro o caminho pra vender na internet. Bora?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Te mostro o caminho pra vender na internet. Bora?</div>
+        </div>
+      </div>
+      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+      <div class="whybody hidden"><b>Por quê:</b> convite entrega valor (o caminho), não pede compra.</div>
+    </div>
+
+    <div class="card g">
+      <div class="steplabel"><span class="card-tag">A6 · captura do telefone → agenda</span></div>
+      <div class="chatframe">
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Boa, me passa teu número." title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Boa, me passa teu número.</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Meu sócio cria um grupo e te manda o link da call." title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Meu sócio cria um grupo e te manda o link da call.</div>
+        </div>
+        <div class="bblrow">
+          <button class="bbl-copy" data-copy="Consegue amanhã Xh ou prefere de noite, tipo Yh?" title="Copiar" aria-label="Copiar mensagem">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+          <div class="bbl">Consegue amanhã Xh ou prefere de noite, tipo Yh?</div>
+        </div>
+      </div>
+      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+      <div class="whybody hidden"><b>Por quê:</b> número embrulhado no próximo passo (grupo → link). Ofereça <b>2 horários</b> concretos (preencha X e Y).</div>
+    </div>
+  </section>
+
+  <!-- ===================== TRILHA B ===================== -->
+  <section class="panel" id="panel-trilhaB">
+    <div class="panel-head">
+      <div class="panel-eyebrow" style="color:var(--b)">Trilha B · foco: diagnóstico + escala · converte +</div>
+      <div class="panel-title">Perfil B · "Já atuo"</div>
+      <div class="panel-sub">Já tem operação. Escolha a sub-área depois da resposta ao B0.</div>
+    </div>
+
+    <div class="subtabs" id="subtabsB">
+      <button class="subtab active" data-sub="b0">B0 · Sub-triagem</button>
+      <button class="subtab" data-sub="b1">B1 · Dropshipping</button>
+      <button class="subtab" data-sub="b2">B2 · Infoproduto</button>
+      <button class="subtab" data-sub="b3">B3 · Serviço/Tráfego</button>
+      <button class="subtab" data-sub="b4">B4 · Investimentos</button>
+      <button class="subtab" data-sub="bf">Fechamento (B5–B7)</button>
+    </div>
+
+    <div class="subpanel active" id="sub-b0">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B0 · sub-triagem</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Boa demais! E hoje tu trabalha com o quê exatamente no digital?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Boa demais! E hoje tu trabalha com o quê exatamente no digital?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> "já atuo" não quer dizer "já faz drop". Os dados mostram que quem já atua se divide assim (veja abaixo). Escolha a sub-trilha conforme a resposta. Marketplace (ML/Shopee) entra na B1; afiliado entra na B3.</div>
+      </div>
+      <div class="areabars">
+        <div class="ab"><span class="nm">Dropshipping</span><span class="tr"><span class="fl" style="width:100%"></span></span><span class="pc">70%</span></div>
+        <div class="ab"><span class="nm">Investir / trading</span><span class="tr"><span class="fl" style="width:37%"></span></span><span class="pc">26%</span></div>
+        <div class="ab"><span class="nm">Infoproduto</span><span class="tr"><span class="fl" style="width:34%"></span></span><span class="pc">24%</span></div>
+        <div class="ab"><span class="nm">Serviço / freela</span><span class="tr"><span class="fl" style="width:18%"></span></span><span class="pc">12%</span></div>
+      </div>
+    </div>
+
+    <div class="subpanel" id="sub-b1">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B1 · nível</span><span class="card-meta">70% de quem já atua · lead ideal</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Fechou, tu tá no jogo certo então!" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Fechou, tu tá no jogo certo então!</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Vende mais no BR ou já foi pro global?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Vende mais no BR ou já foi pro global?</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E tá faturando quanto por mês mais ou menos?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">E tá faturando quanto por mês mais ou menos?</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B1 · gargalo</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Show. E o que te trava de escalar mais hoje: estrutura, tráfego, produto ou gestão?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Show. E o que te trava de escalar mais hoje: estrutura, tráfego, produto ou gestão?</div>
+          </div>
+        </div>
+        <div class="bridgelabel">Ponte → global (se vender só no BR)</div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="No global o ticket é em dólar ou euro e tem muito menos concorrência que o BR." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">No global o ticket é em dólar ou euro e tem muito menos concorrência que o BR.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="É onde tá o dinheiro grande hoje. Já pensou em levar tua operação pra fora?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">É onde tá o dinheiro grande hoje. Já pensou em levar tua operação pra fora?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Vá direto pro fechamento (aba Fechamento B5–B7).</div>
+      </div>
+    </div>
+
+    <div class="subpanel" id="sub-b2">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B2 · nível</span><span class="card-meta">24% de quem já atua</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Boa, então tu já manja de vender no digital." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Boa, então tu já manja de vender no digital.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Trabalha com curso ou mentoria próprio, como afiliado, ou cria conteúdo?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Trabalha com curso ou mentoria próprio, como afiliado, ou cria conteúdo?</div>
+          </div>
+        </div>
+        <div class="bridgelabel">Ponte → global</div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Massa, quem já vende no digital pega drop global voando." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Massa, quem já vende no digital pega drop global voando.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="É um ativo com produto físico e caixa entrando todo dia." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">É um ativo com <b>produto físico e caixa entrando todo dia</b>.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Não depende de lançamento. Já olhou pra esse mercado?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Não depende de lançamento. Já olhou pra esse mercado?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> ele já tem a skill de venda; a ponte posiciona o drop como fonte de caixa recorrente e menos volátil que infoproduto.</div>
+      </div>
+    </div>
+
+    <div class="subpanel" id="sub-b3">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B3 · nível</span><span class="card-meta">12% + afiliados</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Show! Tu presta serviço pra clientes, tipo tráfego ou design?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Show! Tu presta serviço pra clientes, tipo tráfego ou design?</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Ou toca um projeto próprio?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Ou toca um projeto próprio?</div>
+          </div>
+        </div>
+        <div class="bridgelabel">Ponte → global</div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Hoje tu constrói o negócio dos outros e troca teu tempo por dinheiro." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Hoje tu constrói o negócio dos outros e troca teu tempo por dinheiro.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Com drop global tu usa essa skill pra construir o TEU ativo." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Com drop global tu usa essa skill pra construir o <b>TEU ativo</b>.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Um ativo que roda sem depender de cliente. Faz sentido?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Um ativo que roda sem depender de cliente. Faz sentido?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> gestor de tráfego é conversão de ouro (já domina o motor do drop). A ponte vira a dor "troco tempo por dinheiro" em desejo de ativo próprio.</div>
+      </div>
+    </div>
+
+    <div class="subpanel" id="sub-b4">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B4 · nível</span><span class="card-meta">26% de quem já atua</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Tu busca só rentabilizar teu capital ou ter um negócio próprio?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Tu busca só rentabilizar teu capital ou ter um negócio próprio?</div>
+          </div>
+        </div>
+        <div class="bridgelabel">Ponte → global</div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Faz sentido. A diferença é que no drop tu tem um negócio com ROI que TU controla." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Faz sentido. A diferença é que no drop tu tem um negócio com ROI que <b>TU controla</b>.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Não fica na mão da oscilação do mercado, tu que decide." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Não fica na mão da oscilação do mercado, tu que decide.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Muita gente usa parte do capital pra rodar drop. Curtiria entender?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Muita gente usa parte do capital pra rodar drop. Curtiria entender?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> esse perfil tem capital e mentalidade de retorno. A ponte enquadra o drop como investimento com controle, não aposta.</div>
+      </div>
+    </div>
+
+    <div class="subpanel" id="sub-bf">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B5 · decisão + verba</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Antes de te passar pro meu sócio: tu decide sozinho ou tem sócio?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Antes de te passar pro meu sócio: tu decide sozinho ou tem sócio?</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E tem caixa hoje pra investir em crescer?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">E tem caixa hoje pra investir em crescer?</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B6 · convite diagnóstico</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Deixa eu fazer o seguinte contigo: marca uma call com meu sócio." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Deixa eu fazer o seguinte contigo: marca uma call com meu sócio.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="A gente analisa teu momento e acha os gargalos." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">A gente analisa teu momento e acha os gargalos.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Te mostro o caminho pra escalar no drop global. Topa dar essa olhada?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Te mostro o caminho pra escalar no drop global. Topa dar essa olhada?</div>
+          </div>
+        </div>
+      </div>
+      <div class="card g">
+        <div class="steplabel"><span class="card-tag">B7 · telefone + horário</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Perfeito, me passa teu número que a gente cria um grupo e solta o link da call." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Perfeito, me passa teu número que a gente cria um grupo e solta o link da call.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Consegue hoje Xh ou amanhã Yh?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Consegue hoje Xh ou amanhã Yh?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> qualifica <b>autoridade</b> (quem paga) e <b>verba</b> antes de gastar a call. Lead quente = horário próximo (hoje/amanhã) pra não esfriar.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OBJEÇÕES ===================== -->
+  <section class="panel" id="panel-objecoes">
+    <div class="panel-head">
+      <div class="panel-eyebrow">Extra</div>
+      <div class="panel-title">Tratamento de objeções</div>
+      <div class="panel-sub">As mais comuns nos dados + no-show. Respostas que reabrem, não encerram.</div>
+    </div>
+    <div class="oc-grid">
+      <div class="oc">
+        <div class="q">Tá caro / não tenho grana agora</div>
+        <div class="chatframe mini">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Tranquilo, nem falei de valor ainda. A call é gratuita." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Tranquilo, nem falei de valor ainda. A call é <b>gratuita</b>.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Hoje tu tá com quanto de caixa? Te mostro o caminho certo." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Hoje tu tá com quanto de caixa? Te mostro o caminho certo.</div>
+          </div>
+        </div>
+      </div>
+      <div class="oc">
+        <div class="q">Vou pensar / depois eu vejo</div>
+        <div class="chatframe mini">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Suave. Só pra eu te entender." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Suave. Só pra eu te entender.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="É o momento que tá apertado ou tá na dúvida se é pra ti?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">É <b>o momento</b> que tá apertado ou tá na dúvida se é pra ti?</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="A call é sem compromisso e tira exatamente essa dúvida a limpo." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">A call é sem compromisso e tira exatamente essa dúvida a limpo.</div>
+          </div>
+        </div>
+      </div>
+      <div class="oc">
+        <div class="q">Tô sem tempo / muito corrido</div>
+        <div class="chatframe mini">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Te entendo, todo mundo corrido. Por isso a call é rápida, uns 30 a 40 minutos." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Te entendo, todo mundo corrido. Por isso a call é rápida, uns 30 a 40 minutos.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Prefere no fim de semana ou de noite pra não atrapalhar teu dia?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Prefere <b>no fim de semana</b> ou de noite pra não atrapalhar teu dia?</div>
+          </div>
+        </div>
+      </div>
+      <div class="oc">
+        <div class="q">Sumiu depois de aceitar (no-show)</div>
+        <div class="chatframe mini">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Fala [nome]! Bora remarcar aquela call?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Fala [nome]! Bora remarcar aquela call?</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Consegue hoje 20h ou amanhã no mesmo horário?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Consegue <b>hoje 20h</b> ou amanhã no mesmo horário?</div>
+          </div>
+        </div>
+        <div style="font-size:12.5px;color:var(--faint);margin-top:10px;">Só 1 tentativa. Se sumir de novo, reengaje em 1 a 2 semanas.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REGRAS ===================== -->
+  <section class="panel" id="panel-regras">
+    <div class="panel-head">
+      <div class="panel-eyebrow">Não negocie</div>
+      <div class="panel-title">As 4 regras que os dados provaram</div>
+    </div>
+    <div class="rules4">
+      <div class="rc"><div class="n">1h</div><h4>Responda em até 1 hora</h4><p>Até 1h: ~10% dão telefone. Após 3h: ~2%. Fator de apoio mais forte.</p></div>
+      <div class="rc"><div class="n">7,6x</div><h4>Inbound é prioridade</h4><p>Quem te chama primeiro converte 7,6x mais. Resposta em minutos.</p></div>
+      <div class="rc"><div class="n">1×</div><h4>Uma pergunta por vez</h4><p>Conversa, não interrogatório. Espelhe o tom do lead.</p></div>
+      <div class="rc"><div class="n">2</div><h4>Sempre 2 horários</h4><p>"Amanhã Xh ou Yh?" fecha mais que "quando puder". Confirme no dia.</p></div>
+    </div>
+    <div class="callout">
+      <b>Regra do telefone:</b> nunca peça o número "solto". Ele vem depois de qualificar (área → dor → verba → convite aceito) e embrulhado no próximo passo: <i>"me passa teu número que o sócio cria o grupo e manda o link"</i>. No histórico, veio após ~26 mensagens suas, então <b>qualifique primeiro, número depois</b>.
+    </div>
+  </section>
+
+</main>
+
+<script>
+  function goTab(name){
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab===name); });
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.toggle('active', p.id==='panel-'+name); });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.querySelectorAll('#mainTabs .tab').forEach(function(t){
+    t.addEventListener('click', function(){ goTab(t.dataset.tab); });
+  });
+
+  document.querySelectorAll('#subtabsB .subtab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('#subtabsB .subtab').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelectorAll('#panel-trilhaB .subpanel').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      document.getElementById('sub-'+t.dataset.sub).classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.whytoggle').forEach(function(b){
+    b.addEventListener('click', function(){
+      var body = b.nextElementSibling;
+      body.classList.toggle('hidden');
+      b.classList.toggle('open');
+    });
+  });
+
+  function fallbackCopy(text){
+    var ta=document.createElement('textarea');
+    ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.bbl-copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.getAttribute('data-copy');
+      var done = function(){
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.classList.remove('copied'); }, 1400);
+      };
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+      } else {
+        fallbackCopy(text); done();
+      }
+    });
+  });
+</script>
+<script>
+if ("serviceWorker" in navigator) { window.addEventListener("load", function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); }); }
+</script>
+</body>
+</html>
