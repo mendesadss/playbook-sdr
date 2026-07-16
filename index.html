@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
-<title>Playbook SDR · Direct Mendes</title>
+<title>Playbook SDR v2 · Direct Mendes</title>
 <meta name="color-scheme" content="dark light">
 <style>
   :root{
@@ -84,12 +84,14 @@
   .panel-title{font-size:24px;font-weight:800;letter-spacing:-.01em;}
   .panel-sub{color:var(--muted);font-size:14.5px;margin-top:4px;max-width:60ch;}
 
-  /* ===== Sub-tabs (Trilha B) ===== */
+  /* ===== Sub-tabs ===== */
   .subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
   .subtab{font-family:var(--mono);font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:8px;
     border:1px solid var(--border);background:var(--panel2);color:var(--muted);cursor:pointer;transition:.15s;}
   .subtab:hover{border-color:var(--b-bd);color:var(--text);}
   .subtab.active{background:var(--b-soft);border-color:var(--b-bd);color:var(--b);}
+  #subtabsA .subtab:hover{border-color:var(--a-bd);}
+  #subtabsA .subtab.active{background:var(--a-soft);border-color:var(--a-bd);color:var(--a);}
   .subpanel{display:none;}
   .subpanel.active{display:block;animation:fade .15s ease;}
 
@@ -171,7 +173,7 @@
 <body>
 
 <div class="topbar">
-  <div class="brand">Playbook SDR · Direct Mendes</div>
+  <div class="brand">Playbook SDR v2 · Direct Mendes</div>
   <nav class="tabs" id="mainTabs">
     <button class="tab active" data-tab="abertura">Abertura</button>
     <button class="tab" data-tab="trilhaA">Trilha A</button>
@@ -195,22 +197,22 @@
       <div class="steplabel"><span class="card-tag">Mensagem 1 · abertura</span></div>
       <div class="chatframe">
         <div class="bblrow">
-          <button class="bbl-copy" data-copy="Fala [nome], tudo certo? Vi que você chegou aqui recentemente." title="Copiar" aria-label="Copiar mensagem">
+          <button class="bbl-copy" data-copy="Fala [nome], tudo certo? Vi que você me seguiu aqui recentemente" title="Copiar" aria-label="Copiar mensagem">
             <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
             <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </button>
-          <div class="bbl">Fala [nome], tudo certo? Vi que você chegou aqui recentemente.</div>
+          <div class="bbl">Fala [nome], tudo certo? Vi que você me seguiu aqui recentemente</div>
         </div>
         <div class="bblrow">
-          <button class="bbl-copy" data-copy="Posso te fazer uma pergunta rápida?" title="Copiar" aria-label="Copiar mensagem">
+          <button class="bbl-copy" data-copy="Posso te fazer uma pergunta?" title="Copiar" aria-label="Copiar mensagem">
             <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
             <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </button>
-          <div class="bbl">Posso te fazer uma pergunta rápida?</div>
+          <div class="bbl">Posso te fazer uma pergunta?</div>
         </div>
       </div>
       <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-      <div class="whybody hidden"><b>Por quê:</b> "chegou aqui recentemente" dá contexto sem soar automático; "posso te perguntar?" é um micro-sim que abre a conversa. Sempre com o <b>primeiro nome</b>.</div>
+      <div class="whybody hidden"><b>Por quê:</b> "me seguiu aqui recentemente" dá contexto sem soar automático; "posso te perguntar?" é um micro-sim que abre a conversa. Sempre com o <b>primeiro nome</b>.</div>
     </div>
 
     <div class="card">
@@ -273,153 +275,356 @@
     <div class="panel-head">
       <div class="panel-eyebrow" style="color:var(--a)">Trilha A · foco: direção + segurança</div>
       <div class="panel-title">Perfil A · "Quero entrar"</div>
-      <div class="panel-sub">Iniciante, tem emprego/bico, quer renda e liberdade. Precisa de direção.</div>
+      <div class="panel-sub">Duas sub-trilhas: nunca atuou (iniciante puro) e já atuou no passado (voltou frustrado). Escolha pela resposta da A0.</div>
     </div>
 
-    <div class="card">
-      <div class="steplabel"><span class="card-tag">A1 · situação atual</span></div>
-      <div class="chatframe">
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Bacana Mano! E hoje tu trabalha com o quê? CLT, autônomo, tá estudando?" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Bacana Mano! E hoje tu trabalha com o quê? CLT, autônomo, tá estudando?</div>
-        </div>
-      </div>
-      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-      <div class="whybody hidden"><b>Por quê:</b> mapeia a realidade dele (a maioria é CLT ou faz bico) e cria conexão.</div>
+    <div class="subtabs" id="subtabsA">
+      <button class="subtab active" data-sub="a0">A0 · Sub-triagem</button>
+      <button class="subtab" data-sub="anovo">Nunca atuou</button>
+      <button class="subtab" data-sub="aretorno">Já atuou no passado</button>
     </div>
 
-    <div class="card">
-      <div class="steplabel"><span class="card-tag">A2 · motivação</span></div>
-      <div class="chatframe">
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Entendi. E o que te fez querer entrar no mercado digital?" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Entendi. E o que te fez querer entrar no mercado digital?</div>
+    <div class="subpanel active" id="sub-a0">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">A0 · primeira vez ou retorno</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Seria tua primeira vez tentando ou já chegou a tentar algo online antes?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Seria tua primeira vez tentando ou já chegou a tentar algo online antes?</div>
+          </div>
         </div>
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Tá querendo uma renda extra ou já pensa em viver disso e sair do CLT?" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Tá querendo uma renda extra ou já pensa em viver disso e sair do CLT?</div>
-        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> "quero entrar" não quer dizer primeira vez. Quem já tentou e se frustrou carrega uma objeção diferente ("por que dessa vez seria diferente?") que tratar como zero conhecimento ignora. Primeira vez → aba "Nunca atuou". Já tentou → aba "Já atuou no passado".</div>
       </div>
-      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-      <div class="whybody hidden"><b>Por quê:</b> o lead verbaliza o desejo, isso cria conexão e dá material pra call.</div>
     </div>
 
-    <div class="card">
-      <div class="steplabel"><span class="card-tag">A3 · investimento inicial</span></div>
-      <div class="chatframe">
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Faz sentido. Para começar a vender precisa de um investimento inicial." title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Faz sentido. Para começar a vender precisa de um investimento inicial.</div>
+    <div class="subpanel" id="sub-anovo">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">A1 · situação atual</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Bacana, e hoje tu trabalha com o quê CLT, autônomo, tá estudando?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Bacana, e hoje tu trabalha com o quê CLT, autônomo, tá estudando?</div>
+          </div>
         </div>
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Isso inclui loja e anúncios pra testar." title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Isso inclui loja e anúncios pra testar.</div>
-        </div>
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Tu já tem uma reserva separada pra isso ou tá começando do absoluto zero?" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Tu já tem uma reserva separada pra isso ou tá começando do absoluto zero?</div>
-        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> mapeia a realidade dele (a maioria é CLT ou faz bico) e cria conexão.</div>
       </div>
-      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-      <div class="whybody hidden"><b>Por quê:</b> introduz que existe investimento, sem preço ainda, prepara o terreno.</div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">A2 · motivação</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Entendi. E o que te fez querer entrar no mercado digital?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Entendi. E o que te fez querer entrar no mercado digital?</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Tá querendo uma renda extra ou já pensa em viver disso e sair do CLT?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Tá querendo uma renda extra ou já pensa em viver disso e sair do CLT?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> o lead verbaliza o desejo, isso cria conexão e dá material pra call.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">A3 · dor</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E o que mais trava hoje: medo de errar, falta de tempo ou não saber por onde começar?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">E o que mais trava hoje: medo de errar, falta de tempo ou não saber por onde começar?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> até aqui o script só extrai desejo (A2). O medo de começar errado é um traço central desse perfil, mas nunca era perguntado, só presumido. Pergunta aberta, o lead nomeia o próprio travamento com as próprias palavras.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">A4 · investimento inicial</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Faz sentido. Para começar a vender precisa de um investimento inicial." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Faz sentido. Para começar a vender precisa de um investimento inicial.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Isso inclui loja e anúncios pra testar." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Isso inclui loja e anúncios pra testar.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Tu já tem uma reserva pra isso ou tá começando do zero?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Tu já tem uma reserva pra isso ou tá começando do zero?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> introduz que existe investimento, sem preço ainda, prepara o terreno.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">A5 · valor de caixa · direto e leve</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Só pra te situar, dá pra começar bem com algo entre 1k e 2k." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Só pra te situar, dá pra começar bem com algo entre 1k e 2k.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Tu tem esse valor disponível hoje pra investir?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Tu tem esse valor disponível hoje pra investir?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> ancora o ticket de entrada e qualifica a verba de forma objetiva, sem ser invasivo. Se disser que não tem agora, vá para a objeção "sem grana" (aba Objeções).</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">A6 · convite · valor</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Bacana, já dá pra iniciar bem!" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Bacana, já dá pra iniciar bem!</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Topa marcar uma call com meu sócio?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Topa marcar uma call com meu sócio?</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Te mostramos o caminho pra vender na internet. Bora?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Te mostramos o caminho pra vender na internet. Bora?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> convite entrega valor (o caminho), não pede compra.</div>
+      </div>
+
+      <div class="card g">
+        <div class="steplabel"><span class="card-tag">A7 · captura do telefone → agenda</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Boa, me passa teu número." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Boa, me passa teu número.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Meu sócio cria um grupo e te manda o link da call." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Meu sócio cria um grupo e te manda o link da call.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Consegue amanhã Xh ou prefere de noite, tipo Yh?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Consegue amanhã Xh ou prefere de noite, tipo Yh?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> número embrulhado no próximo passo (grupo → link). Ofereça <b>2 horários</b> concretos (preencha X e Y).</div>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="steplabel"><span class="card-tag">A4 · valor de caixa · direto e leve</span></div>
-      <div class="chatframe">
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Só pra te situar, dá pra começar bem com algo entre 1k e 2k." title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Só pra te situar, dá pra começar bem com algo entre 1k e 2k.</div>
+    <div class="subpanel" id="sub-aretorno">
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">AR1 · causa</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Entendo, muita gente já passou por isso." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Entendo, muita gente já passou por isso.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="O que travou, faltou direção, tempo ou o método não era o certo?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">O que travou, faltou direção, tempo ou o método não era o certo?</div>
+          </div>
         </div>
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Tu tem esse valor disponível hoje pra investir?" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Tu tem esse valor disponível hoje pra investir?</div>
-        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> reformula a tentativa anterior como problema de direção, não de capacidade, o que já é a proposta de valor da mentoria. Pergunta aberta, o lead nomeia a própria dor.</div>
       </div>
-      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-      <div class="whybody hidden"><b>Por quê:</b> ancora o ticket de entrada e qualifica a verba de forma objetiva, sem ser invasivo. Se disser que não tem agora, vá para a objeção "sem grana" (aba Objeções).</div>
-    </div>
 
-    <div class="card">
-      <div class="steplabel"><span class="card-tag">A5 · convite · valor</span></div>
-      <div class="chatframe">
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Bacana, já dá pra iniciar bem!" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Bacana, já dá pra iniciar bem!</div>
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">AR2 · situação atual</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E hoje, o que tu faz CLT, autônomo, ou ainda mexe com algo online?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">E hoje, o que tu faz CLT, autônomo, ou ainda mexe com algo online?</div>
+          </div>
         </div>
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Topa marcar uma call com meu sócio?" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Topa marcar uma call com meu sócio?</div>
-        </div>
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Te mostramos o caminho pra vender na internet. Bora?" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Te mostramos o caminho pra vender na internet. Bora?</div>
-        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> mapeia a realidade atual sem presumir zero conhecimento, já que esse lead já teve alguma experiência.</div>
       </div>
-      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-      <div class="whybody hidden"><b>Por quê:</b> convite entrega valor (o caminho), não pede compra.</div>
-    </div>
 
-    <div class="card g">
-      <div class="steplabel"><span class="card-tag">A6 · captura do telefone → agenda</span></div>
-      <div class="chatframe">
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Boa, me passa teu número." title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Boa, me passa teu número.</div>
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">AR3 · desejo / diferencial</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E por que voltar a tentar agora? O que mudou desde a última vez?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">E por que voltar a tentar agora? O que mudou desde a última vez?</div>
+          </div>
         </div>
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Meu sócio cria um grupo e te manda o link da call." title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Meu sócio cria um grupo e te manda o link da call.</div>
-        </div>
-        <div class="bblrow">
-          <button class="bbl-copy" data-copy="Consegue amanhã Xh ou prefere de noite, tipo Yh?" title="Copiar" aria-label="Copiar mensagem">
-            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
-            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </button>
-          <div class="bbl">Consegue amanhã Xh ou prefere de noite, tipo Yh?</div>
-        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> extrai desejo e, ao mesmo tempo, faz o próprio lead verbalizar o diferencial desta tentativa, material valioso pro fechamento.</div>
       </div>
-      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-      <div class="whybody hidden"><b>Por quê:</b> número embrulhado no próximo passo (grupo → link). Ofereça <b>2 horários</b> concretos (preencha X e Y).</div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">AR4 · investimento inicial</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Faz sentido. Para começar a vender precisa de um investimento inicial." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Faz sentido. Para começar a vender precisa de um investimento inicial.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Isso inclui loja e anúncios pra testar." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Isso inclui loja e anúncios pra testar.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Tu já tem uma reserva pra isso ou tá começando do zero?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Tu já tem uma reserva pra isso ou tá começando do zero?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> mesma lógica da A4 (pergunta sobre reserva financeira, não sobre conhecimento, então serve igual aqui).</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">AR5 · valor de caixa · direto e leve</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Só pra te situar, dá pra começar bem com algo entre 1k e 2k." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Só pra te situar, dá pra começar bem com algo entre 1k e 2k.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Tu tem esse valor disponível hoje pra investir?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Tu tem esse valor disponível hoje pra investir?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> ancora o ticket de entrada e qualifica a verba de forma objetiva. Se disser que não tem agora, vá para a objeção "sem grana" (aba Objeções).</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">AR6 · convite · diferencial</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Bacana, já dá pra começar bem." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Bacana, já dá pra começar bem.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Dessa vez com direção, não sozinho." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Dessa vez com direção, não sozinho.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Topa marcar uma call com meu sócio? Te mostramos o caminho certo." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Topa marcar uma call com meu sócio? Te mostramos o caminho certo.</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> o convite carrega o diferencial ("com direção, não sozinho") que responde direto à objeção "por que dessa vez seria diferente".</div>
+      </div>
+
+      <div class="card g">
+        <div class="steplabel"><span class="card-tag">AR7 · captura do telefone → agenda</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Boa, me passa teu número." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Boa, me passa teu número.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Meu sócio cria um grupo e te manda o link da call." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Meu sócio cria um grupo e te manda o link da call.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Consegue amanhã Xh ou prefere de noite, tipo Yh?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Consegue amanhã Xh ou prefere de noite, tipo Yh?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> número embrulhado no próximo passo (grupo → link). Ofereça <b>2 horários</b> concretos (preencha X e Y).</div>
+      </div>
     </div>
   </section>
 
@@ -511,15 +716,49 @@
             <div class="bbl">No global o ticket é em dólar ou euro e tem muito menos concorrência que o BR.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="É onde tá o dinheiro grande hoje. Já pensou em levar tua operação pra fora?" title="Copiar" aria-label="Copiar mensagem">
+            <button class="bbl-copy" data-copy="É onde tá o dinheiro grande hoje. Já pensou em ir pro global?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </button>
-            <div class="bbl">É onde tá o dinheiro grande hoje. Já pensou em levar tua operação pra fora?</div>
+            <div class="bbl">É onde tá o dinheiro grande hoje. Já pensou em ir pro global?</div>
+          </div>
+        </div>
+        <div class="bridgelabel">Ponte → já é global, faturamento baixo ou zero (diagnóstico de tração)</div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Entendo, muita gente entra no global sozinho e trava na tração, não é falta de mercado." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Entendo, muita gente entra no global sozinho e trava na tração, não é falta de mercado.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="O que não engrenou ainda: produto, tráfego ou funil?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">O que não engrenou ainda: produto, tráfego ou funil?</div>
+          </div>
+        </div>
+        <div class="bridgelabel">Ponte → já é global, faturamento relevante (escala com método)</div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Aí sim, tu já validou o modelo. Muita gente trava justamente na hora de escalar sozinho." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">Aí sim, tu já validou o modelo. Muita gente trava justamente na hora de escalar sozinho.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="A mentoria tira o teto de quem já fatura. Faz sentido?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">A mentoria tira o teto de quem já fatura. Faz sentido?</div>
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Vá direto pro fechamento (aba Fechamento B5–B7).</div>
+        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Antes essa aba só tinha ponte pra quem vende só BR: quem já respondeu "já foi pro global" na B1 · nível ia direto pro fechamento sem nenhuma mensagem dedicada. Use a resposta de faturamento da B1 · nível pra escolher a ponte certa: baixo/zero é diagnóstico de tração, relevante é escala. Depois, vá pro fechamento (aba Fechamento B5–B7).</div>
       </div>
     </div>
 
@@ -542,6 +781,27 @@
             <div class="bbl">Trabalha com curso ou mentoria próprio, como afiliado, ou cria conteúdo?</div>
           </div>
         </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> mapeia em que formato ele já vende no digital.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B2 · dor</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E o que mais pesa hoje: lançamento instável, algoritmo ou concorrência de conteúdo?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">E o que mais pesa hoje: lançamento instável, algoritmo ou concorrência de conteúdo?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> até aqui a ponte só afirmava a dor (infoproduto é "mais volátil") em vez de perguntar. Pergunta aberta, o lead nomeia a própria dor com infoproduto antes da ponte pro drop.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B2 · ponte</span></div>
         <div class="bridgelabel">Ponte → global</div>
         <div class="chatframe">
           <div class="bblrow">
@@ -590,6 +850,27 @@
             <div class="bbl">Ou toca um projeto próprio?</div>
           </div>
         </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> mapeia se ele presta serviço pra terceiros ou toca projeto próprio.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B3 · dor</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E o que mais cansa hoje: depender de cliente, prazo apertado ou não ter ativo próprio?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">E o que mais cansa hoje: depender de cliente, prazo apertado ou não ter ativo próprio?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> até aqui a ponte só afirmava a dor ("tu troca teu tempo por dinheiro") em vez de perguntar. Pergunta aberta, o lead nomeia a própria dor antes da ponte pro drop.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B3 · ponte</span></div>
         <div class="bridgelabel">Ponte → global</div>
         <div class="chatframe">
           <div class="bblrow">
@@ -631,6 +912,27 @@
             <div class="bbl">Tu busca só rentabilizar teu capital ou ter um negócio próprio?</div>
           </div>
         </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> mapeia se ele busca só render capital ou construir negócio próprio.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B4 · dor</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E o que mais incomoda hoje: oscilação do mercado ou falta de controle sobre o capital?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <div class="bbl">E o que mais incomoda hoje: oscilação do mercado ou falta de controle sobre o capital?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> até aqui esse card não tinha nenhuma pergunta de dor. Pergunta aberta, o lead nomeia a própria frustração com o investimento antes da ponte pro drop.</div>
+      </div>
+
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B4 · ponte</span></div>
         <div class="bridgelabel">Ponte → global</div>
         <div class="chatframe">
           <div class="bblrow">
@@ -779,7 +1081,7 @@
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> essa objeção quase sempre vem como resposta à pergunta de caixa (A4 ou B5). Em vez de confirmar um piso fixo tipo "uns R$1.000", que faz o lead ancorar a resposta nesse número mesmo tendo mais, pergunte o valor real: a mentoria varia de R$2.000 a R$4.000 conforme o caixa, e o sócio precisa do número certo pra oferecer a faixa certa. Só desqualifique com porta aberta se o valor for zero ou claramente incompatível com qualquer faixa.</div>
+        <div class="whybody hidden"><b>Por quê:</b> essa objeção quase sempre vem como resposta à pergunta de caixa (A5/AR5 ou B5). Em vez de confirmar um piso fixo tipo "uns R$1.000", que faz o lead ancorar a resposta nesse número mesmo tendo mais, pergunte o valor real: a mentoria varia de R$2.000 a R$4.000 conforme o caixa, e o sócio precisa do número certo pra oferecer a faixa certa. Só desqualifique com porta aberta se o valor for zero ou claramente incompatível com qualquer faixa.</div>
       </div>
       <div class="oc">
         <div class="q">Vou pensar / depois eu vejo</div>
@@ -878,14 +1180,18 @@
     t.addEventListener('click', function(){ goTab(t.dataset.tab); });
   });
 
-  document.querySelectorAll('#subtabsB .subtab').forEach(function(t){
-    t.addEventListener('click', function(){
-      document.querySelectorAll('#subtabsB .subtab').forEach(function(x){ x.classList.remove('active'); });
-      document.querySelectorAll('#panel-trilhaB .subpanel').forEach(function(x){ x.classList.remove('active'); });
-      t.classList.add('active');
-      document.getElementById('sub-'+t.dataset.sub).classList.add('active');
+  function wireSubtabs(navId, panelId){
+    document.querySelectorAll('#'+navId+' .subtab').forEach(function(t){
+      t.addEventListener('click', function(){
+        document.querySelectorAll('#'+navId+' .subtab').forEach(function(x){ x.classList.remove('active'); });
+        document.querySelectorAll('#'+panelId+' .subpanel').forEach(function(x){ x.classList.remove('active'); });
+        t.classList.add('active');
+        document.getElementById('sub-'+t.dataset.sub).classList.add('active');
+      });
     });
-  });
+  }
+  wireSubtabs('subtabsA','panel-trilhaA');
+  wireSubtabs('subtabsB','panel-trilhaB');
 
   document.querySelectorAll('.whytoggle').forEach(function(b){
     b.addEventListener('click', function(){
@@ -916,9 +1222,10 @@
       }
     });
   });
-</script>
-<script>
-if ("serviceWorker" in navigator) { window.addEventListener("load", function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); }); }
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });
+  }
 </script>
 </body>
 </html>
