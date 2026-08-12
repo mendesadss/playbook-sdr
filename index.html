@@ -3,6 +3,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Playbook SDR v2 · Direct Mendes</title>
 <meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0E1217">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Playbook SDR">
 <style>
   :root{
     --bg:#0E1217; --panel:#161C24; --panel2:#1E2630; --border:#2A333F;
@@ -384,32 +391,18 @@
       </div>
 
       <div class="card g">
-        <div class="steplabel"><span class="card-tag">A7 · captura do telefone → agenda</span></div>
+        <div class="steplabel"><span class="card-tag">A7 · captura do telefone</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Boa, me passa seu número." title="Copiar">
+            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
-            <div class="bbl">Boa, me passa seu número.</div>
-          </div>
-          <div class="bblrow">
-            <button class="bbl-copy" data-copy="Meu sócio cria um grupo e te manda o link da call." title="Copiar">
-              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <div class="bbl">Meu sócio cria um grupo e te manda o link da call.</div>
-          </div>
-          <div class="bblrow">
-            <button class="bbl-copy" data-copy="Consegue amanhã Xh ou prefere de noite, tipo Yh?" title="Copiar">
-              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <div class="bbl">Consegue amanhã Xh ou prefere de noite, tipo Yh?</div>
+            <div class="bbl">Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá.</div>
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> número embrulhado no próximo passo (grupo → link). Ofereça <b>2 horários</b> concretos (preencha X e Y).</div>
+        <div class="whybody hidden"><b>Por quê:</b> número embrulhado no próximo passo (grupo→link). Horário fica de fora daqui, é enviado manual depois.</div>
       </div>
     </div>
 
@@ -547,32 +540,18 @@
       </div>
 
       <div class="card g">
-        <div class="steplabel"><span class="card-tag">AR7 · captura do telefone → agenda</span></div>
+        <div class="steplabel"><span class="card-tag">AR7 · captura do telefone</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Boa, me passa seu número." title="Copiar">
+            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
-            <div class="bbl">Boa, me passa seu número.</div>
-          </div>
-          <div class="bblrow">
-            <button class="bbl-copy" data-copy="Meu sócio cria um grupo e te manda o link da call." title="Copiar">
-              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <div class="bbl">Meu sócio cria um grupo e te manda o link da call.</div>
-          </div>
-          <div class="bblrow">
-            <button class="bbl-copy" data-copy="Consegue amanhã Xh ou prefere de noite, tipo Yh?" title="Copiar">
-              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <div class="bbl">Consegue amanhã Xh ou prefere de noite, tipo Yh?</div>
+            <div class="bbl">Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá.</div>
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> número embrulhado no próximo passo (grupo → link). Ofereça <b>2 horários</b> concretos (preencha X e Y).</div>
+        <div class="whybody hidden"><b>Por quê:</b> número embrulhado no próximo passo (grupo→link). Horário fica de fora daqui, é enviado manual depois.</div>
       </div>
     </div>
   </section>
@@ -591,7 +570,7 @@
       <button class="subtab" data-sub="b2">B2 · Infoproduto</button>
       <button class="subtab" data-sub="b3">B3 · Serviço/Tráfego</button>
       <button class="subtab" data-sub="b4">B4 · Investimentos</button>
-      <button class="subtab" data-sub="bf">Fechamento (B5–B7)</button>
+      <button class="subtab" data-sub="bf">Fechamento (B5–B8)</button>
     </div>
 
     <div class="subpanel active" id="sub-b0">
@@ -707,7 +686,7 @@
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Antes essa aba só tinha ponte pra quem vende só BR: quem já respondeu "já foi pro global" na B1 · nível ia direto pro fechamento sem nenhuma mensagem dedicada. Use a resposta de faturamento da B1 · nível pra escolher a ponte certa: baixo/zero é diagnóstico de tração, relevante é escala. Depois, vá pro fechamento (aba Fechamento B5–B7).</div>
+        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Antes essa aba só tinha ponte pra quem vende só BR: quem já respondeu "já foi pro global" na B1 · nível ia direto pro fechamento sem nenhuma mensagem dedicada. Use a resposta de faturamento da B1 · nível pra escolher a ponte certa: baixo/zero é diagnóstico de tração, relevante é escala. Depois, vá pro fechamento (aba Fechamento B5–B8).</div>
       </div>
     </div>
 
@@ -913,7 +892,28 @@
 
     <div class="subpanel" id="sub-bf">
       <div class="card">
-        <div class="steplabel"><span class="card-tag">B5 · decisão + verba</span></div>
+        <div class="steplabel"><span class="card-tag">B5 · situação de renda</span></div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="E hoje, qual sua fonte de renda? Com a loja, CLT, autônomo, tem outros negócios?" title="Copiar">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <div class="bbl">E hoje, qual sua fonte de renda? Com a loja, CLT, autônomo, tem outros negócios?</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Pergunto porque precisa de renda pra sustentar a operação." title="Copiar">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <div class="bbl">Pergunto porque precisa de renda pra sustentar a operação.</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> diferente da Trilha A (que já pergunta a situação em A1/AR2 antes de chegar na verba), a Trilha B ia direto pro caixa sem nunca checar se o lead tem alguma renda ativa. Caixa disponível sem nenhuma renda entrando é reserva final, não capital de giro: se gastar tudo na mentoria, não sobra pra sustentar teste de tráfego depois. Use a resposta aqui pra qualificar o B6: qualquer renda ativa (mesmo pequena) mantém qualificado; zero renda nenhuma vira sinal de risco.</div>
+      </div>
+      <div class="card">
+        <div class="steplabel"><span class="card-tag">B6 · decisão + verba</span></div>
         <div class="chatframe">
           <div class="bblrow">
             <button class="bbl-copy" data-copy="Você decide sozinho ou tem sócio?" title="Copiar">
@@ -931,10 +931,10 @@
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> pergunta aberta, sem piso sugerido. Um número âncora tipo "uns R$1.000" faz o lead ancorar a resposta nele mesmo quando tem mais, e a mentoria varia de R$2.000 a R$4.000 conforme o caixa do lead (o sócio oferece a faixa certa em cima do valor real). Se vier um valor dentro ou acima da faixa, leve o número junto pro sócio na hora de passar o lead.</div>
+        <div class="whybody hidden"><b>Por quê:</b> pergunta aberta, sem piso sugerido. Um número âncora tipo "uns R$1.000" faz o lead ancorar a resposta nele mesmo quando tem mais, e a mentoria varia de R$2.000 a R$4.000 conforme o caixa do lead (o sócio oferece a faixa certa em cima do valor real). Se vier um valor dentro ou acima da faixa, leve o número junto pro sócio na hora de passar o lead. Se o lead não tiver nenhuma renda ativa (ver B5) e esse caixa for a última reserva, trate como a objeção "sem grana": desqualifique com porta aberta em vez de seguir pro B7.</div>
       </div>
       <div class="card">
-        <div class="steplabel"><span class="card-tag">B6 · convite diagnóstico</span></div>
+        <div class="steplabel"><span class="card-tag">B7 · convite diagnóstico</span></div>
         <div class="chatframe">
           <div class="bblrow">
             <button class="bbl-copy" data-copy="Vou marcar uma call com meu sócio pra você." title="Copiar">
@@ -953,25 +953,18 @@
         </div>
       </div>
       <div class="card g">
-        <div class="steplabel"><span class="card-tag">B7 · telefone + horário</span></div>
+        <div class="steplabel"><span class="card-tag">B8 · captura do telefone</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Perfeito, me passa seu número que a gente cria um grupo e solta o link da call." title="Copiar">
+            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
-            <div class="bbl">Perfeito, me passa seu número que a gente cria um grupo e solta o link da call.</div>
-          </div>
-          <div class="bblrow">
-            <button class="bbl-copy" data-copy="Consegue hoje Xh ou amanhã Yh?" title="Copiar">
-              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <div class="bbl">Consegue hoje Xh ou amanhã Yh?</div>
+            <div class="bbl">Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá.</div>
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> qualifica <b>autoridade</b> (quem paga) e <b>verba</b> antes de gastar a call. Lead quente = horário próximo (hoje/amanhã) pra não esfriar.</div>
+        <div class="whybody hidden"><b>Por quê:</b> qualifica <b>autoridade</b> (quem paga) e <b>verba</b> antes de gastar a call. Número embrulhado no próximo passo (grupo→link). Horário fica de fora daqui, é enviado manual depois.</div>
       </div>
     </div>
   </section>
@@ -989,7 +982,7 @@
       <div class="rc"><div class="n">2</div><h4>Sempre 2 horários</h4><p>"Amanhã Xh ou Yh?" fecha mais que "quando puder". Confirme no dia.</p></div>
     </div>
     <div class="callout">
-      <b>Regra do telefone:</b> nunca peça o número "solto". Ele vem depois de qualificar (área → dor → verba → convite aceito) e embrulhado no próximo passo: <i>"me passa seu número que o sócio cria o grupo e manda o link"</i>. No histórico, veio após ~26 mensagens suas → <b>qualifique primeiro, número depois</b>.
+      <b>Regra do telefone:</b> nunca peça o número "solto". Ele vem depois de qualificar (área → dor → verba → convite aceito) e embrulhado no próximo passo: <i>"me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá"</i>. No histórico, veio após ~26 mensagens suas → <b>qualifique primeiro, número depois</b>.
     </div>
   </section>
 
@@ -1052,5 +1045,11 @@
       }
     });
   });
+
+  if("serviceWorker" in navigator){
+    window.addEventListener("load", ()=>{
+      navigator.serviceWorker.register("./sw.js").catch(()=>{});
+    });
+  }
 </script>
 </body></html>
