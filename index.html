@@ -1,15 +1,8 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Playbook SDR v2 · Direct Mendes</title>
+<title>Playbook SDR v2 — Direct Mendes</title>
 <meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#0E1217">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" href="./icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="./icon-180.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Playbook SDR">
 <style>
   :root{
     --bg:#0E1217; --panel:#161C24; --panel2:#1E2630; --border:#2A333F;
@@ -96,7 +89,7 @@
   .card.g .card-tag{color:var(--good);}
   .card-meta{font-size:11.5px;color:var(--faint);font-family:var(--mono);}
 
-  /* ===== Chat frame (Instagram DM mockup): fixo, independe do tema da ferramenta ===== */
+  /* ===== Chat frame (Instagram DM mockup) — fixo, independe do tema da ferramenta ===== */
   .chatframe{background:#F0F2F5;border:1px solid #E1E4E8;border-radius:16px;padding:12px;
     max-width:min(320px,100%);margin:10px 0 4px;display:flex;flex-direction:column;gap:4px;}
   .chatframe.mini{padding:10px;}
@@ -142,6 +135,18 @@
   .ab .nm{font-size:13.5px;} .ab .tr{background:var(--panel2);border-radius:5px;height:16px;overflow:hidden;}
   .ab .fl{height:100%;background:var(--b);border-radius:5px;} .ab .pc{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right;}
 
+  /* ===== Respostas rápidas ===== */
+  .qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:640px){.qr-grid{grid-template-columns:1fr;}}
+  .qr{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;}
+  .qr.wide{grid-column:1 / -1;}
+  .qr .q{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px;}
+  .qr-blockhead{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .qr-blocklabel{font-family:var(--mono);font-size:11.5px;color:var(--muted);}
+  .qr-body{background:#F0F2F5;border:1px solid #E1E4E8;border-radius:12px;padding:16px 18px;}
+  .qr-body p{margin:0 0 12px;font-size:14.5px;line-height:1.55;color:#141d27;}
+  .qr-body p:last-child{margin-bottom:0;}
+
   /* ===== Rules ===== */
   .rules4{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:18px;}
   @media(max-width:560px){.rules4{grid-template-columns:1fr;}}
@@ -163,6 +168,7 @@
     <button class="tab active" data-tab="abertura">Abertura</button>
     <button class="tab" data-tab="trilhaA">Trilha A</button>
     <button class="tab" data-tab="trilhaB">Trilha B</button>
+    <button class="tab" data-tab="rapidas">Respostas Rápidas</button>
     <button class="tab" data-tab="regras">Regras</button>
   </nav>
 </div>
@@ -214,12 +220,12 @@
 
     <div class="fork">
       <div class="fk a" onclick="goTab('trilhaA')">
-        <div class="ft">→ "QUERO ENTRAR" <span class="go">ir → Trilha A</span></div>
+        <div class="ft">◆ "QUERO ENTRAR" <span class="go">ir → Trilha A</span></div>
         <p>Iniciante / saindo do CLT. Foco em direção e segurança.</p>
         <div class="says">"quero começar", "tô perdido", "ainda não sei nada"</div>
       </div>
       <div class="fk b" onclick="goTab('trilhaB')">
-        <div class="ft">→ "JÁ ATUO" <span class="go">ir → Trilha B</span></div>
+        <div class="ft">◆ "JÁ ATUO" <span class="go">ir → Trilha B</span></div>
         <p>Já tem operação. Converte mais.</p>
         <div class="says">"já tenho loja", "já rodo tráfego", "trabalho com X"</div>
       </div>
@@ -230,7 +236,7 @@
   <section class="panel" id="panel-trilhaA">
     <div class="panel-head">
       <div class="panel-eyebrow" style="color:var(--a)">Trilha A · foco: direção + segurança</div>
-      <div class="panel-title">Perfil A · "Quero entrar"</div>
+      <div class="panel-title">Perfil A — "Quero entrar"</div>
       <div class="panel-sub">Duas sub-trilhas: nunca atuou (iniciante puro) e já atuou no passado (voltou frustrado). Escolha pela resposta da A0.</div>
     </div>
 
@@ -560,7 +566,7 @@
   <section class="panel" id="panel-trilhaB">
     <div class="panel-head">
       <div class="panel-eyebrow" style="color:var(--b)">Trilha B · foco: diagnóstico + escala · converte +</div>
-      <div class="panel-title">Perfil B · "Já atuo"</div>
+      <div class="panel-title">Perfil B — "Já atuo"</div>
       <div class="panel-sub">Já tem operação. Escolha a sub-área depois da resposta ao B0.</div>
     </div>
 
@@ -570,7 +576,7 @@
       <button class="subtab" data-sub="b2">B2 · Infoproduto</button>
       <button class="subtab" data-sub="b3">B3 · Serviço/Tráfego</button>
       <button class="subtab" data-sub="b4">B4 · Investimentos</button>
-      <button class="subtab" data-sub="bf">Fechamento (B5–B8)</button>
+      <button class="subtab" data-sub="bf">Fechamento (B5→B8)</button>
     </div>
 
     <div class="subpanel active" id="sub-b0">
@@ -686,7 +692,7 @@
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Antes essa aba só tinha ponte pra quem vende só BR: quem já respondeu "já foi pro global" na B1 · nível ia direto pro fechamento sem nenhuma mensagem dedicada. Use a resposta de faturamento da B1 · nível pra escolher a ponte certa: baixo/zero é diagnóstico de tração, relevante é escala. Depois, vá pro fechamento (aba Fechamento B5–B8).</div>
+        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Antes essa aba só tinha ponte pra quem vende só BR — quem já respondeu "já foi pro global" na B1 · nível ia direto pro fechamento sem nenhuma mensagem dedicada. Use a resposta de faturamento da B1 · nível pra escolher a ponte certa: baixo/zero é diagnóstico de tração, relevante é escala. Depois, vá pro fechamento (aba Fechamento B5→B8).</div>
       </div>
     </div>
 
@@ -910,7 +916,7 @@
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> diferente da Trilha A (que já pergunta a situação em A1/AR2 antes de chegar na verba), a Trilha B ia direto pro caixa sem nunca checar se o lead tem alguma renda ativa. Caixa disponível sem nenhuma renda entrando é reserva final, não capital de giro: se gastar tudo na mentoria, não sobra pra sustentar teste de tráfego depois. Use a resposta aqui pra qualificar o B6: qualquer renda ativa (mesmo pequena) mantém qualificado; zero renda nenhuma vira sinal de risco.</div>
+        <div class="whybody hidden"><b>Por quê:</b> diferente da Trilha A (que já pergunta a situação em A1/AR2 antes de chegar na verba), a Trilha B ia direto pro caixa sem nunca checar se o lead tem alguma renda ativa. Caixa disponível sem nenhuma renda entrando é reserva final, não capital de giro — se gastar tudo na mentoria, não sobra pra sustentar teste de tráfego depois. Use a resposta aqui pra qualificar o B6: qualquer renda ativa (mesmo pequena) mantém qualificado; zero renda nenhuma vira sinal de risco.</div>
       </div>
       <div class="card">
         <div class="steplabel"><span class="card-tag">B6 · decisão + verba</span></div>
@@ -969,20 +975,74 @@
     </div>
   </section>
 
+  <!-- ===================== RESPOSTAS RÁPIDAS ===================== -->
+  <section class="panel" id="panel-rapidas">
+    <div class="panel-head">
+      <div class="panel-eyebrow">Extra</div>
+      <div class="panel-title">Respostas rápidas</div>
+      <div class="panel-sub">Situações fora do fluxo linear do script. Use quando a conversa pedir, não como próximo passo fixo.</div>
+    </div>
+    <div class="qr-grid">
+      <div class="qr">
+        <div class="q">Lead não sabe o que é dropshipping</div>
+        <div class="chatframe mini">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Dropshipping é vender sem estoque, o fornecedor manda direto pro cliente." title="Copiar">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <div class="bbl">Dropshipping é vender sem estoque, o fornecedor manda direto pro cliente.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="No global você vende pro exterior e ganha em dólar ou euro." title="Copiar">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <div class="bbl">No global você vende pro exterior e ganha em dólar ou euro.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Com bem menos concorrência que aqui. Entendeu?" title="Copiar">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <div class="bbl">Com bem menos concorrência que aqui. Entendeu?</div>
+          </div>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> vira e mexe o lead nunca ouviu falar de dropshipping ou não sabe muito ao certo. Explica o mecanismo, depois desenvolve o gancho do global em 2 passos: "ganhar em dólar ou euro" (benefício pessoal, mais forte que só dizer que o ticket é em dólar) e "menos concorrência" (facilidade). Termina perguntando se ele entendeu, não "faz sentido", pra soar como conversa e não como discurso de vendas.</div>
+      </div>
+
+      <div class="qr wide">
+        <div class="q">Autoridade · jornada do Mendes</div>
+        <div class="qr-blockhead">
+          <button class="bbl-copy" data-copy="Conheci o dropshipping em 2021 e saí do CLT depois de faturar 150 mil com uma sandália ortopédica. Hoje ganho em dólar ou euro no dropshipping global, com mais de 3 milhões faturados em 4 anos." title="Copiar bloco inteiro">
+            <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <span class="qr-blocklabel">Copiar bloco inteiro</span>
+        </div>
+        <div class="qr-body">
+          <p>Conheci o dropshipping em 2021 e saí do CLT depois de faturar 150 mil com uma sandália ortopédica. Hoje ganho em dólar ou euro no dropshipping global, com mais de 3 milhões faturados em 4 anos.</p>
+        </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> essa não segue a regra de limite de balão do resto do playbook, é pra mandar como mensagem única quando o lead precisa de mais confiança antes de seguir (dúvida se funciona de verdade, se o Mendes é sério, se vale a pena). Medida na bolha real do Instagram (274px, mesmo modelo calibrado das outras mensagens): 6 linhas no iPhone. Junta a palavra-chave "dropshipping", o gancho "dólar ou euro" do card de cima, origem (saiu do CLT), prova concreta (150 mil com um produto específico) e autoridade atual (4 anos, 3 milhões). Versão longa, fatos-chave e transcrição bruta da conversa original ficam em <code>jornada-mendes.md</code>, pra reaproveitar em anúncio, página de venda, ou qualquer outro material.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== REGRAS ===================== -->
   <section class="panel" id="panel-regras">
     <div class="panel-head">
       <div class="panel-eyebrow">Não negocie</div>
-      <div class="panel-title">As 4 regras que os dados provaram</div>
+      <div class="panel-title">As 3 regras que os dados provaram</div>
     </div>
     <div class="rules4">
       <div class="rc"><div class="n">1h</div><h4>Responda em até 1 hora</h4><p>Até 1h: ~10% dão telefone. Após 3h: ~2%. Fator de apoio mais forte.</p></div>
       <div class="rc"><div class="n">7,6x</div><h4>Inbound é prioridade</h4><p>Quem te chama primeiro converte 7,6x mais. Resposta em minutos.</p></div>
       <div class="rc"><div class="n">1×</div><h4>Uma pergunta por vez</h4><p>Conversa, não interrogatório. Espelhe o tom do lead.</p></div>
-      <div class="rc"><div class="n">2</div><h4>Sempre 2 horários</h4><p>"Amanhã Xh ou Yh?" fecha mais que "quando puder". Confirme no dia.</p></div>
     </div>
     <div class="callout">
-      <b>Regra do telefone:</b> nunca peça o número "solto". Ele vem depois de qualificar (área → dor → verba → convite aceito) e embrulhado no próximo passo: <i>"me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá"</i>. No histórico, veio após ~26 mensagens suas → <b>qualifique primeiro, número depois</b>.
+      <b>Regra do telefone:</b> nunca peça o número "solto". Ele vem depois de qualificar (área → dor → verba → convite aceito) e embrulhado no próximo passo: <i>"me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá"</i>. No histórico, veio após ~26 mensagens suas — <b>qualifique primeiro, número depois</b>.
     </div>
   </section>
 
@@ -1045,11 +1105,5 @@
       }
     });
   });
-
-  if("serviceWorker" in navigator){
-    window.addEventListener("load", ()=>{
-      navigator.serviceWorker.register("./sw.js").catch(()=>{});
-    });
-  }
 </script>
 </body></html>
