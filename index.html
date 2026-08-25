@@ -3,6 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Playbook SDR v2 — Direct Mendes</title>
 <meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0E1217">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <style>
   :root{
     --bg:#0E1217; --panel:#161C24; --panel2:#1E2630; --border:#2A333F;
@@ -1105,5 +1110,11 @@
       }
     });
   });
+
+  if("serviceWorker" in navigator){
+    window.addEventListener("load", ()=>{
+      navigator.serviceWorker.register("./sw.js").catch(()=>{});
+    });
+  }
 </script>
 </body></html>
