@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Playbook SDR v2 — Direct Mendes</title>
+<title>Playbook SDR v2 · Direct Mendes</title>
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0E1217">
 <link rel="manifest" href="./manifest.webmanifest">
@@ -94,7 +94,7 @@
   .card.g .card-tag{color:var(--good);}
   .card-meta{font-size:11.5px;color:var(--faint);font-family:var(--mono);}
 
-  /* ===== Chat frame (Instagram DM mockup) — fixo, independe do tema da ferramenta ===== */
+  /* ===== Chat frame (Instagram DM mockup): fixo, independe do tema da ferramenta ===== */
   .chatframe{background:#F0F2F5;border:1px solid #E1E4E8;border-radius:16px;padding:12px;
     max-width:min(320px,100%);margin:10px 0 4px;display:flex;flex-direction:column;gap:4px;}
   .chatframe.mini{padding:10px;}
@@ -192,7 +192,7 @@
       <div class="steplabel"><span class="card-tag">Mensagem 1 · abertura</span></div>
       <div class="chatframe">
         <div class="bblrow">
-          <button class="bbl-copy" data-copy="Fala [nome]. Tudo tranquilo?" title="Copiar">
+          <button class="bbl-copy" data-copy="Fala [nome]. Tudo tranquilo?" title="Copiar" aria-label="Copiar mensagem">
             <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
             <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
           </button>
@@ -207,20 +207,22 @@
       <div class="steplabel"><span class="card-tag">Mensagem 2 · triagem</span></div>
       <div class="chatframe">
         <div class="bblrow">
-          <button class="bbl-copy" data-copy="Vi aqui que me segue" title="Copiar">
+          <button class="bbl-copy" data-copy="Vi aqui que me segue" title="Copiar" aria-label="Copiar mensagem">
             <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
             <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
           </button>
           <div class="bbl">Vi aqui que me segue</div>
         </div>
         <div class="bblrow">
-          <button class="bbl-copy" data-copy="Tem interesse em entrar no mercado digital ou já atua?" title="Copiar">
+          <button class="bbl-copy" data-copy="Tem interesse em entrar no mercado digital ou já atua?" title="Copiar" aria-label="Copiar mensagem">
             <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
             <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
           </button>
           <div class="bbl">Tem interesse em <b>entrar no mercado digital</b> ou já atua?</div>
         </div>
       </div>
+      <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+      <div class="whybody hidden"><b>Por quê:</b> "vi que me segue" contextualiza antes de perguntar, soa menos abordagem fria. A pergunta final é o fork inteiro do playbook: define se a conversa segue pra Trilha A ou Trilha B (ver cards abaixo).</div>
     </div>
 
     <div class="fork">
@@ -241,7 +243,7 @@
   <section class="panel" id="panel-trilhaA">
     <div class="panel-head">
       <div class="panel-eyebrow" style="color:var(--a)">Trilha A · foco: direção + segurança</div>
-      <div class="panel-title">Perfil A — "Quero entrar"</div>
+      <div class="panel-title">Perfil A: "Quero entrar"</div>
       <div class="panel-sub">Duas sub-trilhas: nunca atuou (iniciante puro) e já atuou no passado (voltou frustrado). Escolha pela resposta da A0.</div>
     </div>
 
@@ -256,7 +258,7 @@
         <div class="steplabel"><span class="card-tag">A0 · primeira vez ou retorno</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Seria sua primeira vez tentando ou já chegou a tentar algo online antes?" title="Copiar">
+            <button class="bbl-copy" data-copy="Seria sua primeira vez tentando ou já chegou a tentar algo online antes?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -273,7 +275,7 @@
         <div class="steplabel"><span class="card-tag">A1 · situação atual</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Bacana, e hoje você trabalha com o quê CLT, autônomo, tá estudando?" title="Copiar">
+            <button class="bbl-copy" data-copy="Bacana, e hoje você trabalha com o quê CLT, autônomo, tá estudando?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -288,14 +290,14 @@
         <div class="steplabel"><span class="card-tag">A2 · motivação</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Entendi. E o que te fez querer entrar no mercado digital?" title="Copiar">
+            <button class="bbl-copy" data-copy="Entendi. E o que te fez querer entrar no mercado digital?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Entendi. E o que te fez querer entrar no mercado digital?</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Tá querendo uma renda extra ou já pensa em viver disso e sair do CLT?" title="Copiar">
+            <button class="bbl-copy" data-copy="Tá querendo uma renda extra ou já pensa em viver disso e sair do CLT?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -310,7 +312,7 @@
         <div class="steplabel"><span class="card-tag">A3 · dor</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E o que mais trava hoje: medo de errar, falta de tempo ou não saber por onde começar?" title="Copiar">
+            <button class="bbl-copy" data-copy="E o que mais trava hoje: medo de errar, falta de tempo ou não saber por onde começar?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -325,21 +327,21 @@
         <div class="steplabel"><span class="card-tag">A4 · investimento inicial</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Faz sentido. Para começar a vender precisa de um investimento inicial." title="Copiar">
+            <button class="bbl-copy" data-copy="Faz sentido. Para começar a vender precisa de um investimento inicial." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Faz sentido. Para começar a vender precisa de um investimento inicial.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Isso inclui loja e anúncios pra testar." title="Copiar">
+            <button class="bbl-copy" data-copy="Isso inclui loja e anúncios pra testar." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Isso inclui loja e anúncios pra testar.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Você já tem uma reserva pra isso ou tá começando do zero?" title="Copiar">
+            <button class="bbl-copy" data-copy="Você já tem uma reserva pra isso ou tá começando do zero?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -354,14 +356,14 @@
         <div class="steplabel"><span class="card-tag">A5 · valor de caixa · direto e leve</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Só pra te situar, dá pra começar bem com algo entre 1k e 2k." title="Copiar">
+            <button class="bbl-copy" data-copy="Só pra te situar, dá pra começar bem com algo entre 1k e 2k." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Só pra te situar, dá pra começar bem com algo entre 1k e 2k.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Você tem esse valor disponível hoje pra investir?" title="Copiar">
+            <button class="bbl-copy" data-copy="Você tem esse valor disponível hoje pra investir?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -376,21 +378,21 @@
         <div class="steplabel"><span class="card-tag">A6 · convite · valor</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Bacana, já dá pra iniciar bem!" title="Copiar">
+            <button class="bbl-copy" data-copy="Bacana, já dá pra iniciar bem!" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Bacana, já dá pra iniciar bem!</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Topa marcar uma call com meu sócio?" title="Copiar">
+            <button class="bbl-copy" data-copy="Topa marcar uma call com meu sócio?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Topa marcar uma call com meu sócio?</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Te mostramos o caminho pra vender na internet. Bora?" title="Copiar">
+            <button class="bbl-copy" data-copy="Te mostramos o caminho pra vender na internet. Bora?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -405,7 +407,7 @@
         <div class="steplabel"><span class="card-tag">A7 · captura do telefone</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar">
+            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -422,14 +424,14 @@
         <div class="steplabel"><span class="card-tag">AR1 · causa</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Entendo, muita gente já passou por isso." title="Copiar">
+            <button class="bbl-copy" data-copy="Entendo, muita gente já passou por isso." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Entendo, muita gente já passou por isso.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="O que travou, faltou direção, tempo ou o método não era o certo?" title="Copiar">
+            <button class="bbl-copy" data-copy="O que travou, faltou direção, tempo ou o método não era o certo?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -444,7 +446,7 @@
         <div class="steplabel"><span class="card-tag">AR2 · situação atual</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E hoje, o que você faz CLT, autônomo, ou ainda mexe com algo online?" title="Copiar">
+            <button class="bbl-copy" data-copy="E hoje, o que você faz CLT, autônomo, ou ainda mexe com algo online?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -459,7 +461,7 @@
         <div class="steplabel"><span class="card-tag">AR3 · desejo / diferencial</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E por que voltar a tentar agora? O que mudou desde a última vez?" title="Copiar">
+            <button class="bbl-copy" data-copy="E por que voltar a tentar agora? O que mudou desde a última vez?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -474,21 +476,21 @@
         <div class="steplabel"><span class="card-tag">AR4 · investimento inicial</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Faz sentido. Para começar a vender precisa de um investimento inicial." title="Copiar">
+            <button class="bbl-copy" data-copy="Faz sentido. Para começar a vender precisa de um investimento inicial." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Faz sentido. Para começar a vender precisa de um investimento inicial.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Isso inclui loja e anúncios pra testar." title="Copiar">
+            <button class="bbl-copy" data-copy="Isso inclui loja e anúncios pra testar." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Isso inclui loja e anúncios pra testar.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Você já tem uma reserva pra isso ou tá começando do zero?" title="Copiar">
+            <button class="bbl-copy" data-copy="Você já tem uma reserva pra isso ou tá começando do zero?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -503,14 +505,14 @@
         <div class="steplabel"><span class="card-tag">AR5 · valor de caixa · direto e leve</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Só pra te situar, dá pra começar bem com algo entre 1k e 2k." title="Copiar">
+            <button class="bbl-copy" data-copy="Só pra te situar, dá pra começar bem com algo entre 1k e 2k." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Só pra te situar, dá pra começar bem com algo entre 1k e 2k.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Você tem esse valor disponível hoje pra investir?" title="Copiar">
+            <button class="bbl-copy" data-copy="Você tem esse valor disponível hoje pra investir?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -525,21 +527,21 @@
         <div class="steplabel"><span class="card-tag">AR6 · convite · diferencial</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Bacana, já dá pra começar bem." title="Copiar">
+            <button class="bbl-copy" data-copy="Bacana, já dá pra começar bem." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Bacana, já dá pra começar bem.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Dessa vez com direção, não sozinho." title="Copiar">
+            <button class="bbl-copy" data-copy="Dessa vez com direção, não sozinho." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Dessa vez com direção, não sozinho.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Topa marcar uma call com meu sócio? Te mostramos o caminho certo." title="Copiar">
+            <button class="bbl-copy" data-copy="Topa marcar uma call com meu sócio? Te mostramos o caminho certo." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -554,7 +556,7 @@
         <div class="steplabel"><span class="card-tag">AR7 · captura do telefone</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar">
+            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -571,7 +573,7 @@
   <section class="panel" id="panel-trilhaB">
     <div class="panel-head">
       <div class="panel-eyebrow" style="color:var(--b)">Trilha B · foco: diagnóstico + escala · converte +</div>
-      <div class="panel-title">Perfil B — "Já atuo"</div>
+      <div class="panel-title">Perfil B: "Já atuo"</div>
       <div class="panel-sub">Já tem operação. Escolha a sub-área depois da resposta ao B0.</div>
     </div>
 
@@ -589,7 +591,7 @@
         <div class="steplabel"><span class="card-tag">B0 · sub-triagem</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Boa demais! E hoje você trabalha com o quê exatamente no digital?" title="Copiar">
+            <button class="bbl-copy" data-copy="Boa demais! E hoje você trabalha com o quê exatamente no digital?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -612,33 +614,35 @@
         <div class="steplabel"><span class="card-tag">B1 · nível</span><span class="card-meta">70% de quem já atua · lead ideal</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Fechou, você tá no jogo certo então!" title="Copiar">
+            <button class="bbl-copy" data-copy="Fechou, você tá no jogo certo então!" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Fechou, você tá no jogo certo então!</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Vende mais no BR ou já foi pro global?" title="Copiar">
+            <button class="bbl-copy" data-copy="Vende mais no BR ou já foi pro global?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Vende mais no BR ou já foi pro global?</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E tá faturando quanto por mês mais ou menos?" title="Copiar">
+            <button class="bbl-copy" data-copy="E tá faturando quanto por mês mais ou menos?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">E tá faturando quanto por mês mais ou menos?</div>
           </div>
         </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> é o lead mais quente (70% de quem já atua). As duas perguntas mapeiam mercado (BR ou global) e porte (faturamento), que decidem qual ponte usar no próximo card (B1 · gargalo).</div>
       </div>
       <div class="card">
         <div class="steplabel"><span class="card-tag">B1 · gargalo</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Show. E o que te trava de escalar mais hoje: estrutura, tráfego, produto ou gestão?" title="Copiar">
+            <button class="bbl-copy" data-copy="Show. E o que te trava de escalar mais hoje: estrutura, tráfego, produto ou gestão?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -648,31 +652,55 @@
         <div class="bridgelabel">Ponte → global (se vender só no BR)</div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="No global o ticket é em dólar ou euro e tem muito menos concorrência que o BR." title="Copiar">
+            <button class="bbl-copy" data-copy="No global o ticket é em dólar ou euro e tem muito menos concorrência que o BR." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">No global o ticket é em dólar ou euro e tem muito menos concorrência que o BR.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="É onde tá o dinheiro grande hoje. Já pensou em ir pro global?" title="Copiar">
+            <button class="bbl-copy" data-copy="É onde tá o dinheiro grande hoje. Já pensou em ir pro global?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">É onde tá o dinheiro grande hoje. Já pensou em ir pro global?</div>
           </div>
         </div>
+        <div class="bridgelabel">Ponte → LATAM contra-entrega (formato de risco)</div>
+        <div class="chatframe">
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="Entendo, contra-entrega LATAM costuma dar bastante dor de cabeça." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <div class="bbl">Entendo, contra-entrega LATAM costuma dar bastante dor de cabeça.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="O cliente só paga na entrega, então rola muito reembolso e chargeback." title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <div class="bbl">O cliente só paga na entrega, então rola muito reembolso e chargeback.</div>
+          </div>
+          <div class="bblrow">
+            <button class="bbl-copy" data-copy="No global é pré-pago, em dólar ou euro. Já pensou em migrar?" title="Copiar" aria-label="Copiar mensagem">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <div class="bbl">No global é pré-pago, em dólar ou euro. Já pensou em migrar?</div>
+          </div>
+        </div>
         <div class="bridgelabel">Ponte → já é global, faturamento baixo ou zero (diagnóstico de tração)</div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Entendo, muita gente entra no global sozinho e trava na tração, não é falta de mercado." title="Copiar">
+            <button class="bbl-copy" data-copy="Entendo, muita gente entra no global sozinho e trava na tração, não é falta de mercado." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Entendo, muita gente entra no global sozinho e trava na tração, não é falta de mercado.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="O que não engrenou ainda: produto, tráfego ou funil?" title="Copiar">
+            <button class="bbl-copy" data-copy="O que não engrenou ainda: produto, tráfego ou funil?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -682,14 +710,14 @@
         <div class="bridgelabel">Ponte → já é global, faturamento relevante (escala com método)</div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Aí sim, você já validou o modelo. Muita gente trava justamente na hora de escalar sozinho." title="Copiar">
+            <button class="bbl-copy" data-copy="Aí sim, você já validou o modelo. Muita gente trava justamente na hora de escalar sozinho." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Aí sim, você já validou o modelo. Muita gente trava justamente na hora de escalar sozinho.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="A mentoria tira o teto de quem já fatura. Faz sentido?" title="Copiar">
+            <button class="bbl-copy" data-copy="A mentoria tira o teto de quem já fatura. Faz sentido?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -697,7 +725,7 @@
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Antes essa aba só tinha ponte pra quem vende só BR — quem já respondeu "já foi pro global" na B1 · nível ia direto pro fechamento sem nenhuma mensagem dedicada. Use a resposta de faturamento da B1 · nível pra escolher a ponte certa: baixo/zero é diagnóstico de tração, relevante é escala. Depois, vá pro fechamento (aba Fechamento B5→B8).</div>
+        <div class="whybody hidden"><b>Por quê:</b> quem já faz drop é seu lead mais quente. "Escalar" e "tráfego" são seus sinais de compra número 1. Antes essa aba só tinha ponte pra quem vende só BR: quem já respondeu "já foi pro global" na B1 · nível ia direto pro fechamento sem nenhuma mensagem dedicada. Use a resposta de faturamento da B1 · nível pra escolher a ponte certa: baixo/zero é diagnóstico de tração, relevante é escala. Se o lead mencionar LATAM ou contra-entrega na resposta de nível, use a ponte de LATAM contra-entrega antes de qualquer uma das outras: é um formato de risco (paga só na entrega, cliente mais criterioso por poder de compra mais baixo, gera reembolso e chargeback), então vale desqualificar esse modelo antes de convidar pro global. Depois, vá pro fechamento (aba Fechamento B5→B8).</div>
       </div>
     </div>
 
@@ -706,14 +734,14 @@
         <div class="steplabel"><span class="card-tag">B2 · nível</span><span class="card-meta">24% de quem já atua</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Boa, então você já manja de vender no digital." title="Copiar">
+            <button class="bbl-copy" data-copy="Boa, então você já manja de vender no digital." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Boa, então você já manja de vender no digital.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Trabalha com curso ou mentoria próprio, como afiliado, ou cria conteúdo?" title="Copiar">
+            <button class="bbl-copy" data-copy="Trabalha com curso ou mentoria próprio, como afiliado, ou cria conteúdo?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -728,7 +756,7 @@
         <div class="steplabel"><span class="card-tag">B2 · dor</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E o que mais pesa hoje: lançamento instável, algoritmo ou concorrência de conteúdo?" title="Copiar">
+            <button class="bbl-copy" data-copy="E o que mais pesa hoje: lançamento instável, algoritmo ou concorrência de conteúdo?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -744,21 +772,21 @@
         <div class="bridgelabel">Ponte → global</div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Massa, quem já vende no digital pega drop global voando." title="Copiar">
+            <button class="bbl-copy" data-copy="Massa, quem já vende no digital pega drop global voando." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Massa, quem já vende no digital pega drop global voando.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="É um ativo com produto físico e caixa entrando todo dia." title="Copiar">
+            <button class="bbl-copy" data-copy="É um ativo com produto físico e caixa entrando todo dia." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">É um ativo com <b>produto físico e caixa entrando todo dia</b>.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Não depende de lançamento. Já olhou pra esse mercado?" title="Copiar">
+            <button class="bbl-copy" data-copy="Não depende de lançamento. Já olhou pra esse mercado?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -775,14 +803,14 @@
         <div class="steplabel"><span class="card-tag">B3 · nível</span><span class="card-meta">12% + afiliados</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Show! Você presta serviço pra clientes, tipo tráfego ou design?" title="Copiar">
+            <button class="bbl-copy" data-copy="Show! Você presta serviço pra clientes, tipo tráfego ou design?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Show! Você presta serviço pra clientes, tipo tráfego ou design?</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Ou toca um projeto próprio?" title="Copiar">
+            <button class="bbl-copy" data-copy="Ou toca um projeto próprio?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -797,7 +825,7 @@
         <div class="steplabel"><span class="card-tag">B3 · dor</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E o que mais cansa hoje: depender de cliente, prazo apertado ou não ter ativo próprio?" title="Copiar">
+            <button class="bbl-copy" data-copy="E o que mais cansa hoje: depender de cliente, prazo apertado ou não ter ativo próprio?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -813,21 +841,21 @@
         <div class="bridgelabel">Ponte → global</div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Hoje você constrói o negócio dos outros e troca seu tempo por dinheiro." title="Copiar">
+            <button class="bbl-copy" data-copy="Hoje você constrói o negócio dos outros e troca seu tempo por dinheiro." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Hoje você constrói o negócio dos outros e troca seu tempo por dinheiro.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Com drop global você usa essa skill pra construir o SEU ativo." title="Copiar">
+            <button class="bbl-copy" data-copy="Com drop global você usa essa skill pra construir o SEU ativo." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Com drop global você usa essa skill pra construir o <b>SEU ativo</b>.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Um ativo que roda sem depender de cliente. Faz sentido?" title="Copiar">
+            <button class="bbl-copy" data-copy="Um ativo que roda sem depender de cliente. Faz sentido?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -844,7 +872,7 @@
         <div class="steplabel"><span class="card-tag">B4 · nível</span><span class="card-meta">26% de quem já atua</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Você busca só rentabilizar seu capital ou ter um negócio próprio?" title="Copiar">
+            <button class="bbl-copy" data-copy="Você busca só rentabilizar seu capital ou ter um negócio próprio?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -859,7 +887,7 @@
         <div class="steplabel"><span class="card-tag">B4 · dor</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E o que mais incomoda hoje: oscilação do mercado ou falta de controle sobre o capital?" title="Copiar">
+            <button class="bbl-copy" data-copy="E o que mais incomoda hoje: oscilação do mercado ou falta de controle sobre o capital?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -875,21 +903,21 @@
         <div class="bridgelabel">Ponte → global</div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Faz sentido. A diferença é que no drop você tem um negócio com ROI que VOCÊ controla." title="Copiar">
+            <button class="bbl-copy" data-copy="Faz sentido. A diferença é que no drop você tem um negócio com ROI que VOCÊ controla." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Faz sentido. A diferença é que no drop você tem um negócio com ROI que <b>VOCÊ controla</b>.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Não fica na mão da oscilação do mercado, você que decide." title="Copiar">
+            <button class="bbl-copy" data-copy="Não fica na mão da oscilação do mercado, você que decide." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Não fica na mão da oscilação do mercado, você que decide.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Muita gente usa parte do capital pra rodar drop. Curtiria entender?" title="Copiar">
+            <button class="bbl-copy" data-copy="Muita gente usa parte do capital pra rodar drop. Curtiria entender?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -906,14 +934,14 @@
         <div class="steplabel"><span class="card-tag">B5 · situação de renda</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E hoje, qual sua fonte de renda? Com a loja, CLT, autônomo, tem outros negócios?" title="Copiar">
+            <button class="bbl-copy" data-copy="E hoje, qual sua fonte de renda? Com a loja, CLT, autônomo, tem outros negócios?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">E hoje, qual sua fonte de renda? Com a loja, CLT, autônomo, tem outros negócios?</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Pergunto porque precisa de renda pra sustentar a operação." title="Copiar">
+            <button class="bbl-copy" data-copy="Pergunto porque precisa de renda pra sustentar a operação." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -921,20 +949,20 @@
           </div>
         </div>
         <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
-        <div class="whybody hidden"><b>Por quê:</b> diferente da Trilha A (que já pergunta a situação em A1/AR2 antes de chegar na verba), a Trilha B ia direto pro caixa sem nunca checar se o lead tem alguma renda ativa. Caixa disponível sem nenhuma renda entrando é reserva final, não capital de giro — se gastar tudo na mentoria, não sobra pra sustentar teste de tráfego depois. Use a resposta aqui pra qualificar o B6: qualquer renda ativa (mesmo pequena) mantém qualificado; zero renda nenhuma vira sinal de risco.</div>
+        <div class="whybody hidden"><b>Por quê:</b> diferente da Trilha A (que já pergunta a situação em A1/AR2 antes de chegar na verba), a Trilha B ia direto pro caixa sem nunca checar se o lead tem alguma renda ativa. Caixa disponível sem nenhuma renda entrando é reserva final, não capital de giro: se gastar tudo na mentoria, não sobra pra sustentar teste de tráfego depois. Use a resposta aqui pra qualificar o B6: qualquer renda ativa (mesmo pequena) mantém qualificado; zero renda nenhuma vira sinal de risco.</div>
       </div>
       <div class="card">
         <div class="steplabel"><span class="card-tag">B6 · decisão + verba</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Você decide sozinho ou tem sócio?" title="Copiar">
+            <button class="bbl-copy" data-copy="Você decide sozinho ou tem sócio?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Você decide sozinho ou tem sócio?</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="E hoje você tem quanto de caixa disponível pra investir em escalar?" title="Copiar">
+            <button class="bbl-copy" data-copy="E hoje você tem quanto de caixa disponível pra investir em escalar?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -948,26 +976,28 @@
         <div class="steplabel"><span class="card-tag">B7 · convite diagnóstico</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Vou marcar uma call com meu sócio pra você." title="Copiar">
+            <button class="bbl-copy" data-copy="Vou marcar uma call com meu sócio pra você." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Vou marcar uma call com meu sócio pra você.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Te mostramos o caminho pra escalar no drop global. Topa dar essa olhada?" title="Copiar">
+            <button class="bbl-copy" data-copy="Te mostramos o caminho pra escalar no drop global. Topa dar essa olhada?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Te mostramos o caminho pra escalar no drop global. Topa dar essa olhada?</div>
           </div>
         </div>
+        <button class="whytoggle"><span class="chev">▾</span> Por quê</button>
+        <div class="whybody hidden"><b>Por quê:</b> mesma lógica do A6/AR6: o convite entrega valor (diagnóstico do gargalo), não pede compra.</div>
       </div>
       <div class="card g">
         <div class="steplabel"><span class="card-tag">B8 · captura do telefone</span></div>
         <div class="chatframe">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar">
+            <button class="bbl-copy" data-copy="Me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -992,21 +1022,21 @@
         <div class="q">Lead não sabe o que é dropshipping</div>
         <div class="chatframe mini">
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Dropshipping é vender sem estoque, o fornecedor manda direto pro cliente." title="Copiar">
+            <button class="bbl-copy" data-copy="Dropshipping é vender sem estoque, o fornecedor manda direto pro cliente." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">Dropshipping é vender sem estoque, o fornecedor manda direto pro cliente.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="No global você vende pro exterior e ganha em dólar ou euro." title="Copiar">
+            <button class="bbl-copy" data-copy="No global você vende pro exterior e ganha em dólar ou euro." title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
             <div class="bbl">No global você vende pro exterior e ganha em dólar ou euro.</div>
           </div>
           <div class="bblrow">
-            <button class="bbl-copy" data-copy="Com bem menos concorrência que aqui. Entendeu?" title="Copiar">
+            <button class="bbl-copy" data-copy="Com bem menos concorrência que aqui. Entendeu?" title="Copiar" aria-label="Copiar mensagem">
               <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
               <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </button>
@@ -1020,7 +1050,7 @@
       <div class="qr wide">
         <div class="q">Autoridade · jornada do Mendes</div>
         <div class="qr-blockhead">
-          <button class="bbl-copy" data-copy="Conheci o dropshipping em 2021 e saí do CLT depois de faturar 150 mil com uma sandália ortopédica. Hoje ganho em dólar ou euro no dropshipping global, com mais de 3 milhões faturados em 4 anos." title="Copiar bloco inteiro">
+          <button class="bbl-copy" data-copy="Conheci o dropshipping em 2021 e saí do CLT depois de faturar 150 mil com uma sandália ortopédica. Hoje ganho em dólar ou euro no dropshipping global, com mais de 3 milhões faturados em 4 anos." title="Copiar bloco inteiro" aria-label="Copiar bloco inteiro">
             <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
             <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
           </button>
@@ -1047,7 +1077,7 @@
       <div class="rc"><div class="n">1×</div><h4>Uma pergunta por vez</h4><p>Conversa, não interrogatório. Espelhe o tom do lead.</p></div>
     </div>
     <div class="callout">
-      <b>Regra do telefone:</b> nunca peça o número "solto". Ele vem depois de qualificar (área → dor → verba → convite aceito) e embrulhado no próximo passo: <i>"me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá"</i>. No histórico, veio após ~26 mensagens suas — <b>qualifique primeiro, número depois</b>.
+      <b>Regra do telefone:</b> nunca peça o número "solto". Ele vem depois de qualificar (área → dor → verba → convite aceito) e embrulhado no próximo passo: <i>"me passa seu número, próximo da call meu sócio cria um grupo e te manda o link da call por lá"</i>. No histórico, veio após ~26 mensagens suas: <b>qualifique primeiro, número depois</b>.
     </div>
   </section>
 
