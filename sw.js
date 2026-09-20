@@ -1,7 +1,9 @@
-const CACHE = "playbook-sdr-v4";
+const CACHE = "playbook-sdr-v5-mobile";
 const ASSETS = [
   "./",
   "./index.html",
+  "./app.css",
+  "./app.js",
   "./manifest.webmanifest",
   "./icon.svg",
   "./icon-180.png",
@@ -18,7 +20,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith('playbook-sdr-') && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
