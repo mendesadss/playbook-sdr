@@ -40,8 +40,8 @@
   if(routeHelp){const why=routeHelp.querySelector('.whybody'),toggle=routeHelp.querySelector('.whytoggle');if(toggle&&why){const box=document.createElement('div');box.className='card';box.append(toggle,why);b1.append(box);}}
   function scenario(){routes.forEach((card,i)=>card.classList.toggle('route-hidden',state.scenario!==String(i)));select.value=state.scenario;}
   select.addEventListener('change',()=>{remember();state.scenario=select.value;scenario();save();});scenario();
-  for(const sub of ['b1','b2','b3','b4']){
-    const button=document.createElement('button');button.className='next-step';button.textContent='Continuar para B5 · Situação de renda';
+  for(const sub of ['b1','b2','b3','b4','b5']){
+    const button=document.createElement('button');button.className='next-step';button.textContent='Continuar para B6 · Situação de renda';
     button.addEventListener('click',()=>{remember();showSub('trilhaB','bf');save();restore();});document.getElementById('sub-'+sub).append(button);
   }
   document.querySelectorAll('.fk').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});});
