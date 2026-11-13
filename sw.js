@@ -1,4 +1,4 @@
-const CACHE = "playbook-sdr-v22-fixes";
+const CACHE = "playbook-sdr-v23-respostas";
 const ASSETS = [
   "./",
   "./index.html",
