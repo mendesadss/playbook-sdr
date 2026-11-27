@@ -41,7 +41,7 @@
   function scenario(){routes.forEach((card,i)=>card.classList.toggle('route-hidden',state.scenario!==String(i)));select.value=state.scenario;}
   select.addEventListener('change',()=>{remember();state.scenario=select.value;scenario();save();});scenario();
   for(const sub of ['b1','b2','b3','b4','b5']){
-    const button=document.createElement('button');button.className='next-step';button.textContent='Continuar para B6 · Situação de renda';
+    const button=document.createElement('button');button.className='next-step';button.textContent='Continuar para a caixa (B6)';
     button.addEventListener('click',()=>{remember();showSub('trilhaB','bf');save();restore();});document.getElementById('sub-'+sub).append(button);
   }
   document.querySelectorAll('.fk').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});});
@@ -56,6 +56,17 @@
   });
   let scrollTimer;addEventListener('scroll',()=>{clearTimeout(scrollTimer);scrollTimer=setTimeout(remember,200);},{passive:true});
   addEventListener('pagehide',remember);document.addEventListener('visibilitychange',()=>{if(document.hidden)remember();});
+  // Seletor de variação da abertura para seguidor.
+  {
+    const vcards=[...document.querySelectorAll('#panel-abertura .card')].filter(c=>c.querySelector('.card-tag')?.textContent.includes('variação'));
+    if(vcards.length>1){
+      const bar=document.createElement('div');bar.className='vartabs';
+      const pick=i=>{state.variacao=i;save();vcards.forEach((c,k)=>c.classList.toggle('route-hidden',k!==i));bar.querySelectorAll('.subtab').forEach((b,k)=>{b.classList.toggle('active',k===i);b.setAttribute('aria-pressed',k===i);});};
+      vcards.forEach((c,i)=>{const b=document.createElement('button');b.className='subtab';b.textContent='Variação '+(i+1);b.addEventListener('click',()=>pick(i));bar.append(b);});
+      vcards[0].before(bar);
+      pick(Number.isInteger(state.variacao)&&state.variacao<vcards.length?state.variacao:0);
+    }
+  }
   if(!document.getElementById('panel-'+state.tab))state.tab='abertura';render();restore();
   if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 })();
