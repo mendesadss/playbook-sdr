@@ -45,3 +45,4 @@ button:focus-visible,select:focus-visible,.fk:focus-visible{outline:3px solid va
  .app-toast{bottom:calc(76px + env(safe-area-inset-bottom,0px));width:max-content}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+.vartabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
